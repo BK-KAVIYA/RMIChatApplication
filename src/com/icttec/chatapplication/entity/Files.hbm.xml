@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2023 2:01:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.icttec.chatapplication.entity.Files" table="files" catalog="chatapp" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="chatId" type="int">
+            <column name="chat_id" not-null="true" />
+        </property>
+        <property name="link" type="string">
+            <column name="link" length="100" not-null="true" />
+        </property>
+        <property name="isDeleted" type="int">
+            <column name="is_deleted" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
