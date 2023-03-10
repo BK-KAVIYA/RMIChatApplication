@@ -5,16 +5,19 @@
  */
 package com.icttec.chataplication.main;
 
+import com.icttec.chatapplication.login.Login;
+import com.icttec.chatapplication.login.LoginImp;
+
 /**
  *
  * @author KA VI YA
  */
-public class Login extends javax.swing.JFrame {
+public class ChatLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public ChatLogin() {
         initComponents();
     }
 
@@ -198,7 +201,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsing1ActionPerformed
 
     private void btnlog1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlog1ActionPerformed
-        // TODO add your handling code here:
+        Login login = new Login();
+        String userId=uname1.getText();
+        String password=pwd1.getText();
+        
+        login.setID(userId);
+        login.setPassword(password);
+        
+        LoginImp lgImp = new LoginImp();
+        lgImp.userLogin(login);
+        
     }//GEN-LAST:event_btnlog1ActionPerformed
 
     /**
@@ -218,20 +230,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new ChatLogin().setVisible(true);
             }
         });
     }

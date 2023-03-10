@@ -2,43 +2,67 @@
 package com.icttec.chatapplication.login;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.ictec.chatapplication.user.ClientDashboard;
+import com.icttec.chataplication.admin.AdminDashboard;
+import com.icttec.chataplication.main.ChatLogin;
+import com.icttec.chatapplication.dao.HibernateUtil;
+import com.icttec.chatapplication.entity.Users;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 public class LoginImp implements LoginDAO{
 
-    PreparedStatement pst;
-    DBConnector obj=DBConnector.getObject();
-    Connection conn=obj.getConnection();
-    
+   
     @Override
     public void userLogin(Login logins) {
-        LoginPageGetFarCars loginPage = new LoginPageGetFarCars();
-        String sql="SELECT * FROM user WHERE user_id='"+logins.getID()+"';";
-        try {
-            pst=conn.prepareStatement(sql);
-            ResultSet rs=pst.executeQuery();
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        ChatLogin loginPage = new ChatLogin();
+        String sql="FROM Users WHERE username='" + logins.getID() + "' AND password='" + logins.getPassword() + "'";
+
+            Query qu = sess.createQuery(sql);
+            List UserList = qu.list();
+            if(!UserList.isEmpty()){
+                 Iterator i = UserList.iterator();
+                if (i.hasNext()) {
+                    Users user = (Users) i.next();
+
+                    String email = user.getEmail();
+                    String username = user.getUsername();
+                    String nickname = user.getNickname();
+                    String password = user.getPassword();
+//                byte[] profile_image = user.getProfileImage();
+                    int id = user.getId();
+
+                System.out.println(email+username+nickname);
+      
+//                edit_username.setText(username);
+//                edit_nickname.setText(nickname);
+//                edit_password.setText(password);
             
-            if(rs.next()){
-                if(rs.getString("Password").equals(logins.getPassword())){
-                    switch(rs.getInt("Role")){
-                        case 1:
-                            Admindashboard admindashboard = new Admindashboard();
-                            admindashboard.setUser(logins.getID());
-                            admindashboard.admin_setting(logins.getID());
-                            loginPage.dispose();
+
+                    switch(user.getUserType()){
+                        case "admin":
+                          
+                            AdminDashboard admindashboard = new AdminDashboard();
+                            Users adUsers = new Users();
+                            adUsers.setNickname(nickname);
+                            admindashboard.onLoad(adUsers);
+                            
+                            loginPage.hide();
                             admindashboard.show();
+                            
                             break;
-                        case 2:
-                            DriverDashboard driverdashboard = new DriverDashboard();
-                            //driverdashboard.Load(logins.getID());
-                            driverdashboard.setUser(logins.getID());
-                            loginPage.dispose();
+                        case "user":
+                            
+                            ClientDashboard driverdashboard = new ClientDashboard();
+                            Users clUsers = new Users();
+                            clUsers.setNickname(nickname);
+                            driverdashboard.onLoad(clUsers);
+                            
+                            loginPage.hide();
                             driverdashboard.show();
                             
                             break;
@@ -48,12 +72,10 @@ public class LoginImp implements LoginDAO{
                     }
                 }
                 }else{
+
                      JOptionPane.showMessageDialog(loginPage,"Please Enter the correct username and password!!");
             }
 
-        }catch (SQLException ex) {
-            Logger.getLogger(LoginImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    }}
     
-}
+

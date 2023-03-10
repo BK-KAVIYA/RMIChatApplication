@@ -5,7 +5,8 @@
  */
 package com.icttec.chataplication.admin;
 
-import com.icttec.chataplication.main.Login;
+import com.icttec.chataplication.main.ChatLogin;
+import com.icttec.chatapplication.entity.Users;
 import java.awt.CardLayout;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -2931,6 +2932,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void onLoad(Users aduser){
+        adName1.setText(aduser.getNickname());
+    }
+
     private void menuReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportActionPerformed
       //  AdminReport adminR = new AdminReport();
       //  adminR.setVisible(true);
@@ -2956,7 +2961,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         if(dialogResult==JOptionPane.YES_NO_OPTION){
             this.dispose();
-            Login lgp = new Login();
+            ChatLogin lgp = new ChatLogin();
             lgp.show();
         }
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -3597,7 +3602,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menunotice1ActionPerformed
 
     private void jLabel100MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel100MouseClicked
-        // TODO add your handling code here:
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+            this.dispose();
+            ChatLogin lgp = new ChatLogin();
+            lgp.show();
+        }
     }//GEN-LAST:event_jLabel100MouseClicked
 
     private void jLabel101MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel101MouseClicked
@@ -3609,11 +3620,15 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menutimetable2ActionPerformed
 
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
-        // TODO add your handling code here:
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel110MouseClicked
 
     private void jLabel111MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel111MouseClicked
-        // TODO add your handling code here:
+        this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel111MouseClicked
 
     private void jLabel112MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel112MouseClicked
@@ -4093,4 +4108,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel txtid;
     private javax.swing.JLabel txtid1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

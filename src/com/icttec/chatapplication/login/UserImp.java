@@ -1,6 +1,6 @@
 package com.icttec.chatapplication.login;
 
-import com.carrentalsystem.system.DBConnector;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
