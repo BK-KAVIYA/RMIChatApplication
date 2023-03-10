@@ -3628,7 +3628,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="CardjPannel1">
+    <Container class="javax.swing.JPanel" name="CardAdmin">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="340" y="0" width="670" height="600"/>
@@ -3637,7 +3637,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="CardPri7">
+        <Container class="javax.swing.JPanel" name="GroupList">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3947,7 +3947,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="CardPri8">
+        <Container class="javax.swing.JPanel" name="Setting">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4401,7 +4401,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="CardPri9">
+        <Container class="javax.swing.JPanel" name="CreatGroup">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4412,7 +4412,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="CardPri3"/>
+              <CardConstraints cardName="CreatGroup"/>
             </Constraint>
           </Constraints>
 
@@ -4425,7 +4425,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Admin Dashboard &gt;Manage Cars-&gt;"/>
+                <Property name="text" type="java.lang.String" value="Admin Dashboard &gt;Creat Group-&gt;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -4483,7 +4483,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="40" width="550" height="490"/>
+                  <AbsoluteConstraints x="50" y="90" width="550" height="360"/>
                 </Constraint>
               </Constraints>
 
@@ -4491,112 +4491,63 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jLabel139" min="-2" pref="127" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel140" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel138" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel137" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel136" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel135" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel134" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel142" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel141" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="cStatus1" min="-2" pref="221" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cPrice1" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="carId1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cFueltype1" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="cNoplate1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cSeats1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cName1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cType1" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
+                          <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="jLabel139" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="csearch1" min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel135" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel134" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="csearch1" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="cadd2" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="cadd3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="cdelete1" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="groupname" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="groupdes" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="58" max="32767" attributes="0"/>
+                                  <Component id="cadd2" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="cadd3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Component id="cdelete1" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jLabel139" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="carId1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="groupname" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel134" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cName1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="groupdes" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="jLabel135" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cType1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel136" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel137" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cStatus1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cPrice1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel138" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cSeats1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel140" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cNoplate1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel141" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cFueltype1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel142" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace pref="53" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="csearch1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="cadd2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="cadd3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="cdelete1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4607,7 +4558,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Car ID"/>
+                    <Property name="text" type="java.lang.String" value="Group Name"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel135">
@@ -4615,37 +4566,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Car Name"/>
+                    <Property name="text" type="java.lang.String" value="Group Description"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="cName1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel136">
+                <Component class="javax.swing.JTextField" name="groupdes">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Car Type"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="cType1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel137">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Status"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="cStatus1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel138">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Price"/>
+                    <Property name="scrollOffset" type="int" value="5"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel139">
@@ -4656,7 +4582,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add New Car"/>
+                    <Property name="text" type="java.lang.String" value="Create New Group"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="cadd2">
@@ -4673,16 +4599,8 @@
                     <Property name="text" type="java.lang.String" value="ADD"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadd2ActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadd2MouseClicked"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel140">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="No_of_seats"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="cdelete1">
                   <Properties>
@@ -4701,45 +4619,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cdelete1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel141">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Number Plate"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel142">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Fuel Type"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="carId1">
-                </Component>
-                <Component class="javax.swing.JTextField" name="cPrice1">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cPrice1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="cSeats1">
-                </Component>
-                <Component class="javax.swing.JTextField" name="cNoplate1">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cFueltype1">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Petrol"/>
-                        <StringItem index="1" value="Diesel"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
-                  </AuxValues>
+                <Component class="javax.swing.JTextField" name="groupname">
                 </Component>
                 <Component class="javax.swing.JButton" name="cadd3">
                   <Properties>

@@ -6,6 +6,7 @@
 package com.icttec.chataplication.admin;
 
 import com.icttec.chataplication.main.ChatLogin;
+import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Users;
 import java.awt.CardLayout;
 import java.sql.PreparedStatement;
@@ -27,6 +28,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     
     public AdminDashboard() {
         initComponents();
+        cardLayout1 =(CardLayout)(CardAdmin.getLayout());
     }
 
     @SuppressWarnings("unchecked")
@@ -263,8 +265,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         menutimetable2 = new rojerusan.RSMaterialButtonRectangle();
-        CardjPannel1 = new javax.swing.JPanel();
-        CardPri7 = new javax.swing.JPanel();
+        CardAdmin = new javax.swing.JPanel();
+        GroupList = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jLabel104 = new javax.swing.JLabel();
@@ -280,7 +282,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         BookCount1 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
-        CardPri8 = new javax.swing.JPanel();
+        Setting = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
         jLabel114 = new javax.swing.JLabel();
@@ -317,30 +319,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         txtCity4 = new javax.swing.JTextField();
         jLabel128 = new javax.swing.JLabel();
         txtLName2 = new javax.swing.JTextField();
-        CardPri9 = new javax.swing.JPanel();
+        CreatGroup = new javax.swing.JPanel();
         jLabel129 = new javax.swing.JLabel();
         jLabel143 = new javax.swing.JLabel();
         jLabel144 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jLabel134 = new javax.swing.JLabel();
         jLabel135 = new javax.swing.JLabel();
-        cName1 = new javax.swing.JTextField();
-        jLabel136 = new javax.swing.JLabel();
-        cType1 = new javax.swing.JTextField();
-        jLabel137 = new javax.swing.JLabel();
-        cStatus1 = new javax.swing.JTextField();
-        jLabel138 = new javax.swing.JLabel();
+        groupdes = new javax.swing.JTextField();
         jLabel139 = new javax.swing.JLabel();
         cadd2 = new javax.swing.JButton();
-        jLabel140 = new javax.swing.JLabel();
         cdelete1 = new javax.swing.JButton();
-        jLabel141 = new javax.swing.JLabel();
-        jLabel142 = new javax.swing.JLabel();
-        carId1 = new javax.swing.JTextField();
-        cPrice1 = new javax.swing.JTextField();
-        cSeats1 = new javax.swing.JTextField();
-        cNoplate1 = new javax.swing.JTextField();
-        cFueltype1 = new javax.swing.JComboBox();
+        groupname = new javax.swing.JTextField();
         cadd3 = new javax.swing.JButton();
         csearch1 = new javax.swing.JButton();
         CardPri10 = new javax.swing.JPanel();
@@ -2155,9 +2145,9 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         getContentPane().add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 622));
 
-        CardjPannel1.setLayout(new java.awt.CardLayout());
+        CardAdmin.setLayout(new java.awt.CardLayout());
 
-        CardPri7.setBackground(new java.awt.Color(255, 255, 255));
+        GroupList.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jLabel103.setText("Admin Dashboard->");
@@ -2274,11 +2264,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout CardPri7Layout = new javax.swing.GroupLayout(CardPri7);
-        CardPri7.setLayout(CardPri7Layout);
-        CardPri7Layout.setHorizontalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
+        javax.swing.GroupLayout GroupListLayout = new javax.swing.GroupLayout(GroupList);
+        GroupList.setLayout(GroupListLayout);
+        GroupListLayout.setHorizontalGroup(
+            GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2286,21 +2276,21 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
-            .addGroup(CardPri7Layout.createSequentialGroup()
+            .addGroup(GroupListLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
                 .addContainerGap(215, Short.MAX_VALUE))
         );
-        CardPri7Layout.setVerticalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
+        GroupListLayout.setVerticalGroup(
+            GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel110)
                         .addComponent(jLabel111)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2312,10 +2302,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        CardjPannel1.add(CardPri7, "CardPri1");
+        CardAdmin.add(GroupList, "CardPri1");
 
-        CardPri8.setBackground(new java.awt.Color(255, 255, 255));
-        CardPri8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Setting.setBackground(new java.awt.Color(255, 255, 255));
+        Setting.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/back_red.png"))); // NOI18N
         jLabel112.setText("jLabel16");
@@ -2324,11 +2314,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jLabel112MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 32, -1));
+        Setting.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 32, -1));
 
         jLabel113.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jLabel113.setText("Admin Dashboard >Setting->");
-        CardPri8.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 255, 41));
+        Setting.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 255, 41));
 
         jLabel114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel114.setText("jLabel17");
@@ -2337,47 +2327,47 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jLabel114MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+        Setting.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
         jLabel115.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel115.setText("Registration Number");
-        CardPri8.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 243, 143, 29));
-        CardPri8.add(txtRegNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 241, 250, 32));
+        Setting.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 243, 143, 29));
+        Setting.add(txtRegNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 241, 250, 32));
 
         adGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-        CardPri8.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 111, 186, 28));
+        Setting.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 111, 186, 28));
 
         jLabel116.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel116.setText("Gender");
-        CardPri8.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
-        CardPri8.add(txtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 29));
+        Setting.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
+        Setting.add(txtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 29));
 
         jLabel117.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel117.setText("Email");
-        CardPri8.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, 32));
+        Setting.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, 32));
 
         jLabel118.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel118.setText("First Name");
-        CardPri8.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 70, -1, 32));
-        CardPri8.add(txtFName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 106, 250, 29));
-        CardPri8.add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 323, 398, 32));
+        Setting.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 70, -1, 32));
+        Setting.add(txtFName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 106, 250, 29));
+        Setting.add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 323, 398, 32));
 
         jLabel119.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel119.setText("Adress Line 1");
-        CardPri8.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 284, -1, 32));
-        CardPri8.add(txtaddress3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
+        Setting.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 284, -1, 32));
+        Setting.add(txtaddress3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
 
         jLabel120.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel120.setText("Adress Line 2");
-        CardPri8.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 361, -1, 32));
+        Setting.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 361, -1, 32));
 
         jLabel121.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel121.setText("NIC");
-        CardPri8.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 430, -1, 32));
+        Setting.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 430, -1, 32));
 
         jLabel122.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel122.setText("Phone Number");
-        CardPri8.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 430, -1, 32));
+        Setting.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 430, -1, 32));
 
         jPanel20.setBackground(new java.awt.Color(0, 0, 102));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2413,9 +2403,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel20.add(ShowPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        CardPri8.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 310, -1, 190));
-        CardPri8.add(txtPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
-        CardPri8.add(txtDOB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
+        Setting.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 310, -1, 190));
+        Setting.add(txtPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
+        Setting.add(txtDOB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
 
         AdUpdate1.setBackground(new java.awt.Color(0, 0, 102));
         AdUpdate1.setText("Update");
@@ -2424,11 +2414,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 AdUpdate1ActionPerformed(evt);
             }
         });
-        CardPri8.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
+        Setting.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
 
         lblimage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
         lblimage1.setText("jLabel31");
-        CardPri8.add(lblimage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
+        Setting.add(lblimage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
 
         jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel126.setText("jLabel29");
@@ -2437,7 +2427,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jLabel126MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+        Setting.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
 
         jButton10.setText("add image");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2445,31 +2435,31 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton10MouseClicked(evt);
             }
         });
-        CardPri8.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        Setting.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         txtid1.setText("Image name");
-        CardPri8.add(txtid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
-        CardPri8.add(txtCity3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
+        Setting.add(txtid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
+        Setting.add(txtCity3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
 
         jLabel127.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel127.setText("City");
-        CardPri8.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, 32));
-        CardPri8.add(txtCity4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 32));
+        Setting.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, 32));
+        Setting.add(txtCity4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 32));
 
         jLabel128.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel128.setText("Last Name");
-        CardPri8.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 32));
-        CardPri8.add(txtLName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 250, 29));
+        Setting.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 32));
+        Setting.add(txtLName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 250, 29));
 
-        CardjPannel1.add(CardPri8, "CardPri2");
+        CardAdmin.add(Setting, "CardPri2");
 
-        CardPri9.setBackground(new java.awt.Color(255, 255, 255));
-        CardPri9.setForeground(new java.awt.Color(204, 0, 0));
-        CardPri9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CreatGroup.setBackground(new java.awt.Color(255, 255, 255));
+        CreatGroup.setForeground(new java.awt.Color(204, 0, 0));
+        CreatGroup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel129.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel129.setText("Admin Dashboard >Manage Cars->");
-        CardPri9.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        jLabel129.setText("Admin Dashboard >Creat Group->");
+        CreatGroup.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel143.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel143.setText("jLabel29");
@@ -2478,7 +2468,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jLabel143MouseClicked(evt);
             }
         });
-        CardPri9.add(jLabel143, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+        CreatGroup.add(jLabel143, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
 
         jLabel144.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel144.setText("jLabel17");
@@ -2487,42 +2477,32 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jLabel144MouseClicked(evt);
             }
         });
-        CardPri9.add(jLabel144, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+        CreatGroup.add(jLabel144, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 255));
         jPanel22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102)));
 
         jLabel134.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel134.setText("Car ID");
+        jLabel134.setText("Group Name");
 
         jLabel135.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel135.setText("Car Name");
+        jLabel135.setText("Group Description");
 
-        jLabel136.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel136.setText("Car Type");
-
-        jLabel137.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel137.setText("Status");
-
-        jLabel138.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel138.setText("Price");
+        groupdes.setScrollOffset(5);
 
         jLabel139.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel139.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel139.setText("Add New Car");
+        jLabel139.setText("Create New Group");
 
         cadd2.setBackground(new java.awt.Color(0, 0, 102));
         cadd2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cadd2.setForeground(new java.awt.Color(255, 255, 255));
         cadd2.setText("ADD");
-        cadd2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadd2ActionPerformed(evt);
+        cadd2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadd2MouseClicked(evt);
             }
         });
-
-        jLabel140.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel140.setText("No_of_seats");
 
         cdelete1.setBackground(new java.awt.Color(0, 0, 102));
         cdelete1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2533,20 +2513,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                 cdelete1ActionPerformed(evt);
             }
         });
-
-        jLabel141.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel141.setText("Number Plate");
-
-        jLabel142.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel142.setText("Fuel Type");
-
-        cPrice1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cPrice1ActionPerformed(evt);
-            }
-        });
-
-        cFueltype1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Petrol", "Diesel" }));
 
         cadd3.setBackground(new java.awt.Color(0, 0, 102));
         cadd3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2573,97 +2539,56 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(179, 179, 179)
+                .addComponent(jLabel139)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(csearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel135)
+                        .addComponent(jLabel134)))
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(groupname)
+                            .addComponent(groupdes)))
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel140)
-                            .addComponent(jLabel138)
-                            .addComponent(jLabel137)
-                            .addComponent(jLabel136)
-                            .addComponent(jLabel135)
-                            .addComponent(jLabel134)
-                            .addComponent(jLabel142)
-                            .addComponent(jLabel141))
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cPrice1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(carId1)
-                                    .addComponent(cFueltype1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cNoplate1)
-                                    .addComponent(cSeats1)
-                                    .addComponent(cName1)
-                                    .addComponent(cType1))))))
-                .addGap(171, 171, 171))
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(csearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(cadd2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(cadd3)
-                .addGap(54, 54, 54)
-                .addComponent(cdelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(cadd2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(cadd3)
+                        .addGap(48, 48, 48)
+                        .addComponent(cdelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel139)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carId1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(groupname, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel134))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cName1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(groupdes, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel135))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cType1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel136))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel137)
-                    .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel138))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cSeats1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel140))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cNoplate1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel141))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cFueltype1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel142))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(csearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadd2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadd3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cdelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addGap(82, 82, 82))
         );
 
-        CardPri9.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 550, 490));
+        CreatGroup.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 550, 360));
 
-        CardjPannel1.add(CardPri9, "CardPri3");
+        CardAdmin.add(CreatGroup, "CreatGroup");
 
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
         jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2925,9 +2850,9 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        CardjPannel1.add(CardPri10, "CardPri4");
+        CardAdmin.add(CardPri10, "CardPri4");
 
-        getContentPane().add(CardjPannel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
+        getContentPane().add(CardAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3594,7 +3519,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menuuser1ActionPerformed
 
     private void menucourse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menucourse1ActionPerformed
-        // TODO add your handling code here:
+        cardLayout1.show(CardAdmin,"CreatGroup");
     }//GEN-LAST:event_menucourse1ActionPerformed
 
     private void menunotice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menunotice1ActionPerformed
@@ -3715,17 +3640,22 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadd3ActionPerformed
 
-    private void cPrice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPrice1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cPrice1ActionPerformed
-
     private void cdelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdelete1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cdelete1ActionPerformed
 
-    private void cadd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadd2ActionPerformed
+    private void cadd2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadd2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadd2ActionPerformed
+        
+        String name = groupname.getText();
+        String description = groupdes.getText();
+        DBManager dbManager = new DBManager();
+        if (dbManager.ceratChat(name, description)) {
+             JOptionPane.showMessageDialog(this,"Group created sucessfully");          
+        } else {
+            JOptionPane.showMessageDialog(this,"Group can not create!");
+        }
+    }//GEN-LAST:event_cadd2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -3773,6 +3703,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField CID1;
     private javax.swing.JTextField CarID;
     private javax.swing.JTextField CarID1;
+    private javax.swing.JPanel CardAdmin;
     private javax.swing.JPanel CardPri1;
     private javax.swing.JPanel CardPri10;
     private javax.swing.JPanel CardPri2;
@@ -3780,16 +3711,14 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel CardPri4;
     private javax.swing.JPanel CardPri5;
     private javax.swing.JPanel CardPri6;
-    private javax.swing.JPanel CardPri7;
-    private javax.swing.JPanel CardPri8;
-    private javax.swing.JPanel CardPri9;
     private javax.swing.JPanel CardjPannel;
-    private javax.swing.JPanel CardjPannel1;
+    private javax.swing.JPanel CreatGroup;
     private rojerusan.RSMaterialButtonRectangle Csearch4;
     private rojerusan.RSMaterialButtonRectangle Csearch5;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
     private javax.swing.JLabel DriCount1;
+    private javax.swing.JPanel GroupList;
     private javax.swing.JPanel Invoice;
     private rojeru_san.complementos.RSTableMetro InvoiceTable;
     private javax.swing.JTextField MaintanceID;
@@ -3797,6 +3726,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField ScarId;
     private javax.swing.JButton Search;
     private javax.swing.JButton Search1;
+    private javax.swing.JPanel Setting;
     private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JCheckBox ShowPassword1;
     private javax.swing.JLabel TAmountDisplay;
@@ -3817,26 +3747,18 @@ public class AdminDashboard extends javax.swing.JFrame {
     private rojeru_san.complementos.RSTableMetro bookingtable;
     private rojerusan.RSMaterialButtonRectangle bookingupdate;
     private javax.swing.JComboBox cFueltype;
-    private javax.swing.JComboBox cFueltype1;
     private javax.swing.JComboBox<String> cModel;
     private javax.swing.JTextField cName;
-    private javax.swing.JTextField cName1;
     private javax.swing.JTextField cNoplate;
-    private javax.swing.JTextField cNoplate1;
     private javax.swing.JTextField cPrice;
-    private javax.swing.JTextField cPrice1;
     private javax.swing.JTextField cSeats;
-    private javax.swing.JTextField cSeats1;
     private javax.swing.JTextField cStatus;
-    private javax.swing.JTextField cStatus1;
     private javax.swing.JTextField cType;
-    private javax.swing.JTextField cType1;
     private javax.swing.JButton cadd;
     private javax.swing.JButton cadd1;
     private javax.swing.JButton cadd2;
     private javax.swing.JButton cadd3;
     private javax.swing.JTextField carId;
-    private javax.swing.JTextField carId1;
     private javax.swing.JTextField carid;
     private javax.swing.JTextField carid1;
     private javax.swing.JTable cartable;
@@ -3856,6 +3778,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField damounttxt;
     private javax.swing.JTextField drivertxt;
     private javax.swing.JTextField edatetxt;
+    private javax.swing.JTextField groupdes;
+    private javax.swing.JTextField groupname;
     private javax.swing.JTextField ivoicetxt;
     private javax.swing.JTextField ivoicetxt1;
     private javax.swing.JButton jButton1;
@@ -3910,14 +3834,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel135;
-    private javax.swing.JLabel jLabel136;
-    private javax.swing.JLabel jLabel137;
-    private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel140;
-    private javax.swing.JLabel jLabel141;
-    private javax.swing.JLabel jLabel142;
     private javax.swing.JLabel jLabel143;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel145;

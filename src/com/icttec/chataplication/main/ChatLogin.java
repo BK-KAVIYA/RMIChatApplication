@@ -155,7 +155,6 @@ public class ChatLogin extends javax.swing.JFrame {
 
         pwd1.setBackground(new java.awt.Color(0, 0, 102));
         pwd1.setForeground(new java.awt.Color(255, 255, 255));
-        pwd1.setText(" ");
         pwd1.setToolTipText("");
         pwd1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel4.add(pwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 316, 210, 30));
