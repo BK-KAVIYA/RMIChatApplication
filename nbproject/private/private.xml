@@ -5,10 +5,7 @@
         <group>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dbmanager/DBManager.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/admin/AdminDashboard.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/ictec/chatapplication/user/ClientDashboard.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/login/LoginImp.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/main/ChatLogin.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/login/User.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/utility/Utility.java</file>
         </group>
     </open-files>
