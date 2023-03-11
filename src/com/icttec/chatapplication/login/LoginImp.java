@@ -33,10 +33,19 @@ public class LoginImp implements LoginDAO{
                     String username = user.getUsername();
                     String nickname = user.getNickname();
                     String password = user.getPassword();
-//                byte[] profile_image = user.getProfileImage();
+                    byte[] profile_image = user.getProfileImage();
                     int id = user.getId();
+                    
+                    
+                    user.setId(id);
+                    user.setEmail(email);
+                    user.setUsername(username);
+                    user.setNickname(nickname);
+                    user.setPassword(password);
+                    user.setProfileImage(profile_image);
+                    
 
-                System.out.println(email+username+nickname);
+
       
 //                edit_username.setText(username);
 //                edit_nickname.setText(nickname);
@@ -47,9 +56,9 @@ public class LoginImp implements LoginDAO{
                         case "admin":
                           
                             AdminDashboard admindashboard = new AdminDashboard();
-                            Users adUsers = new Users();
-                            adUsers.setNickname(nickname);
-                            admindashboard.onLoad(adUsers);
+//                            Users adUsers = new Users();
+//                            adUsers.setNickname(nickname);
+                            admindashboard.setAdmin(user);
                             
                             loginPage.hide();
                             admindashboard.show();

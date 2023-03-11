@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dbmanager/DBManager.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/admin/AdminDashboard.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dao/HibernateUtil.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/hibernate.cfg.xml</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/ictec/chatapplication/user/ClientDashboard.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/login/LoginImp.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/main/Login.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/hibernate.reveng.xml</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/entity/Users.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dao/ApplicatiomDAO.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/main/ChatLogin.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/login/User.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/utility/Utility.java</file>
         </group>
     </open-files>
 </project-private>

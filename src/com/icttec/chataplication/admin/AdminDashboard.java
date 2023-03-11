@@ -8,9 +8,15 @@ package com.icttec.chataplication.admin;
 import com.icttec.chataplication.main.ChatLogin;
 import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Users;
+import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
 import java.sql.PreparedStatement;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -21,7 +27,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     
     PreparedStatement pst1;  
-    private static String userID;
+    private static Users adminUser;
     PreparedStatement insert;
     PreparedStatement update;
     CardLayout cardLayout1;
@@ -29,6 +35,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public AdminDashboard() {
         initComponents();
         cardLayout1 =(CardLayout)(CardAdmin.getLayout());
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -255,7 +262,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
+        DashPhoto = new javax.swing.JLabel();
         adName1 = new javax.swing.JLabel();
         menuuser1 = new rojerusan.RSMaterialButtonRectangle();
         menucourse1 = new rojerusan.RSMaterialButtonRectangle();
@@ -287,38 +294,25 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel113 = new javax.swing.JLabel();
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
-        txtRegNo1 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         adGender1 = new javax.swing.JComboBox<String>();
         jLabel116 = new javax.swing.JLabel();
-        txtEmail1 = new javax.swing.JTextField();
-        jLabel117 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
-        txtFName1 = new javax.swing.JTextField();
-        txtAddress1 = new javax.swing.JTextField();
-        jLabel119 = new javax.swing.JLabel();
-        txtaddress3 = new javax.swing.JTextField();
-        jLabel120 = new javax.swing.JLabel();
-        jLabel121 = new javax.swing.JLabel();
-        jLabel122 = new javax.swing.JLabel();
+        uname = new javax.swing.JTextField();
         jPanel20 = new javax.swing.JPanel();
         jLabel123 = new javax.swing.JLabel();
-        adCPwd1 = new javax.swing.JPasswordField();
-        adPwd1 = new javax.swing.JPasswordField();
+        cpwd = new javax.swing.JPasswordField();
+        pwd = new javax.swing.JPasswordField();
         jLabel124 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
         ShowPassword1 = new javax.swing.JCheckBox();
-        txtPhone1 = new javax.swing.JTextField();
-        txtDOB1 = new javax.swing.JTextField();
         AdUpdate1 = new rojerusan.RSMaterialButtonRectangle();
-        lblimage1 = new javax.swing.JLabel();
+        edite_profie_pic = new javax.swing.JLabel();
         jLabel126 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         txtid1 = new javax.swing.JLabel();
-        txtCity3 = new javax.swing.JTextField();
-        jLabel127 = new javax.swing.JLabel();
-        txtCity4 = new javax.swing.JTextField();
         jLabel128 = new javax.swing.JLabel();
-        txtLName2 = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         CreatGroup = new javax.swing.JPanel();
         jLabel129 = new javax.swing.JLabel();
         jLabel143 = new javax.swing.JLabel();
@@ -2051,9 +2045,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel63.setText("Chat Application");
         jPanel15.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, 30));
 
-        jLabel64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
-        jLabel64.setText("jLabel6");
-        jPanel15.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 150, 140));
+        DashPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
+        jPanel15.add(DashPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 150, 140));
 
         adName1.setBackground(new java.awt.Color(255, 255, 255));
         adName1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
@@ -2330,44 +2323,26 @@ public class AdminDashboard extends javax.swing.JFrame {
         Setting.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
         jLabel115.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel115.setText("Registration Number");
-        Setting.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 243, 143, 29));
-        Setting.add(txtRegNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 241, 250, 32));
+        jLabel115.setText("Email");
+        Setting.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 90, 29));
+        Setting.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 260, 32));
 
         adGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-        Setting.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 111, 186, 28));
+        adGender1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adGender1ActionPerformed(evt);
+            }
+        });
+        Setting.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
 
         jLabel116.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel116.setText("Gender");
-        Setting.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
-        Setting.add(txtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 29));
-
-        jLabel117.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel117.setText("Email");
-        Setting.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, 32));
+        Setting.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, 32));
 
         jLabel118.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel118.setText("First Name");
-        Setting.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 70, -1, 32));
-        Setting.add(txtFName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 106, 250, 29));
-        Setting.add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 323, 398, 32));
-
-        jLabel119.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel119.setText("Adress Line 1");
-        Setting.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 284, -1, 32));
-        Setting.add(txtaddress3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
-
-        jLabel120.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel120.setText("Adress Line 2");
-        Setting.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 361, -1, 32));
-
-        jLabel121.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel121.setText("NIC");
-        Setting.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 430, -1, 32));
-
-        jLabel122.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel122.setText("Phone Number");
-        Setting.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 430, -1, 32));
+        jLabel118.setText("User Name");
+        Setting.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 32));
+        Setting.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, 29));
 
         jPanel20.setBackground(new java.awt.Color(0, 0, 102));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2377,11 +2352,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel123.setText("Once Set the password Cann't Modifiey");
         jPanel20.add(jLabel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
 
-        adCPwd1.setText("jPassw");
-        jPanel20.add(adCPwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 181, 30));
+        cpwd.setText("jPassw");
+        jPanel20.add(cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 181, 30));
 
-        adPwd1.setText("jPas1");
-        jPanel20.add(adPwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 181, 30));
+        pwd.setText("jPas1");
+        jPanel20.add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 181, 30));
 
         jLabel124.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel124.setForeground(new java.awt.Color(255, 255, 255));
@@ -2391,7 +2366,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel125.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel125.setForeground(new java.awt.Color(255, 255, 255));
         jLabel125.setText("Password");
-        jPanel20.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, 30));
+        jPanel20.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
         ShowPassword1.setBackground(new java.awt.Color(0, 0, 102));
         ShowPassword1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2403,9 +2378,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel20.add(ShowPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        Setting.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 310, -1, 190));
-        Setting.add(txtPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
-        Setting.add(txtDOB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
+        Setting.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, 190));
 
         AdUpdate1.setBackground(new java.awt.Color(0, 0, 102));
         AdUpdate1.setText("Update");
@@ -2414,11 +2387,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 AdUpdate1ActionPerformed(evt);
             }
         });
-        Setting.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
+        Setting.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 107, 40));
 
-        lblimage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
-        lblimage1.setText("jLabel31");
-        Setting.add(lblimage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
+        edite_profie_pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
+        edite_profie_pic.setText("jLabel31");
+        Setting.add(edite_profie_pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
 
         jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
         jLabel126.setText("jLabel29");
@@ -2435,23 +2408,17 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton10MouseClicked(evt);
             }
         });
-        Setting.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        Setting.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         txtid1.setText("Image name");
         Setting.add(txtid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
-        Setting.add(txtCity3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
-
-        jLabel127.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel127.setText("City");
-        Setting.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, 32));
-        Setting.add(txtCity4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 32));
 
         jLabel128.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel128.setText("Last Name");
-        Setting.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 32));
-        Setting.add(txtLName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 250, 29));
+        jLabel128.setText("Full Name");
+        Setting.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 32));
+        Setting.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 260, 29));
 
-        CardAdmin.add(Setting, "CardPri2");
+        CardAdmin.add(Setting, "Setting");
 
         CreatGroup.setBackground(new java.awt.Color(255, 255, 255));
         CreatGroup.setForeground(new java.awt.Color(204, 0, 0));
@@ -2857,9 +2824,56 @@ public class AdminDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void onLoad(Users aduser){
-        adName1.setText(aduser.getNickname());
+    public void setAdmin(Users adminUser){
+        this.adminUser=adminUser;
+        onLoad();
     }
+    
+    public Users getAdmin(){
+        return adminUser;
+    }
+    
+    private void onLoad(){
+        adName1.setText(getAdmin().getNickname());
+        
+        byte[] profile_image = getAdmin().getProfileImage();
+        if(profile_image != null){
+
+                    Utility utility = new Utility();
+                    ImageIcon imageicon = utility.toImageIcon(profile_image);
+
+//                    ImageIcon iconresized1 = new ImageIcon(imageicon.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+//                    img_profile.setIcon(iconresized1);
+//                    img_profile2.setIcon(iconresized1);
+//                    img_profile3.setIcon(iconresized1);
+//                    img_profile4.setIcon(iconresized1);
+//                    img_profile5.setIcon(iconresized1);
+//                    img_profile6.setIcon(iconresized1);
+
+                    ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+                    DashPhoto.setIcon(iconresized2);
+                }
+    }
+    
+    private void updateSection(){
+            uname.setText(getAdmin().getUserType());
+            fname.setText(getAdmin().getNickname());
+            email.setText(getAdmin().getEmail());
+            pwd.setText(getAdmin().getPassword());
+            cpwd.setText(getAdmin().getPassword());
+            
+            byte[] profile_image = getAdmin().getProfileImage();
+            
+            if(profile_image != null){
+
+                    Utility utility = new Utility();
+                    ImageIcon imageicon = utility.toImageIcon(profile_image);
+
+                    ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+                    edite_profie_pic.setIcon(iconresized2);
+                }
+    }
+
 
     private void menuReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportActionPerformed
       //  AdminReport adminR = new AdminReport();
@@ -3537,7 +3551,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel100MouseClicked
 
     private void jLabel101MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel101MouseClicked
-        // TODO add your handling code here:
+        updateSection();
+        cardLayout1.show(CardAdmin,"Setting");
     }//GEN-LAST:event_jLabel101MouseClicked
 
     private void menutimetable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimetable2ActionPerformed
@@ -3555,30 +3570,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jLabel111MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel111MouseClicked
         this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel111MouseClicked
-
-    private void jLabel112MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel112MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel112MouseClicked
-
-    private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel114MouseClicked
-
-    private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowPassword1MouseClicked
-
-    private void AdUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdUpdate1ActionPerformed
-
-    private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel126MouseClicked
-
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10MouseClicked
 
     private void jLabel143MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel143MouseClicked
         // TODO add your handling code here:
@@ -3657,6 +3648,62 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cadd2MouseClicked
 
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+
+        JFileChooser chooser = new JFileChooser(); //open image file file
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png"); //set image type filter
+        chooser.setFileFilter(filter); //filter
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) { //if image selected
+            File file = chooser.getSelectedFile(); //get selected file
+            String strfilepath = file.getAbsolutePath(); //get abs path
+
+            try {
+                ImageIcon icon = new ImageIcon(strfilepath); //string image path open as a image icon
+                ImageIcon iconresized = new ImageIcon(icon.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT)); //resize image icon fit for profile icon label
+                edite_profie_pic.setText(null); // remove label text
+                edite_profie_pic.setIcon(iconresized); //set seleted image to profile icon label 
+
+
+            } catch (Exception e) {
+                System.out.println("Exception occurred : " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel126MouseClicked
+
+    private void AdUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdUpdate1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdUpdate1ActionPerformed
+
+    private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
+        if(ShowPassword1.isSelected()){
+            pwd.setEchoChar((char)0);
+            cpwd.setEchoChar((char)0);
+            ShowPassword1.setText("Hide Password");
+        }
+        else{
+            pwd.setEchoChar('•');
+            cpwd.setEchoChar('•');
+            ShowPassword1.setText("Show Password");
+        }
+    }//GEN-LAST:event_ShowPassword1MouseClicked
+
+    private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel114MouseClicked
+
+    private void jLabel112MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel112MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel112MouseClicked
+
+    private void adGender1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adGender1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adGender1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3715,6 +3762,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel CreatGroup;
     private rojerusan.RSMaterialButtonRectangle Csearch4;
     private rojerusan.RSMaterialButtonRectangle Csearch5;
+    private javax.swing.JLabel DashPhoto;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
     private javax.swing.JLabel DriCount1;
@@ -3731,13 +3779,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JCheckBox ShowPassword1;
     private javax.swing.JLabel TAmountDisplay;
     private javax.swing.JPasswordField adCPwd;
-    private javax.swing.JPasswordField adCPwd1;
     private javax.swing.JComboBox<String> adGender;
     private javax.swing.JComboBox<String> adGender1;
     private javax.swing.JLabel adName;
     private javax.swing.JLabel adName1;
     private javax.swing.JPasswordField adPwd;
-    private javax.swing.JPasswordField adPwd1;
     private javax.swing.JTextField admintxt;
     private javax.swing.JTextField bidtxt;
     private rojerusan.RSMaterialButtonRectangle booking_id_search;
@@ -3767,6 +3813,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton cdelete1;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
+    private javax.swing.JPasswordField cpwd;
     private javax.swing.JButton csearch;
     private javax.swing.JButton csearch1;
     private javax.swing.JLabel cusad1;
@@ -3778,6 +3825,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField damounttxt;
     private javax.swing.JTextField drivertxt;
     private javax.swing.JTextField edatetxt;
+    private javax.swing.JLabel edite_profie_pic;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fname;
     private javax.swing.JTextField groupdes;
     private javax.swing.JTextField groupname;
     private javax.swing.JTextField ivoicetxt;
@@ -3817,18 +3867,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
-    private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel121;
-    private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
-    private javax.swing.JLabel jLabel127;
     private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
@@ -3905,7 +3949,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
@@ -3980,7 +4023,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblimage;
-    private javax.swing.JLabel lblimage1;
     private rojerusan.RSMaterialButtonRectangle manage_booking_search;
     private rojerusan.RSMaterialButtonRectangle menuReport;
     private rojerusan.RSMaterialButtonRectangle menucourse;
@@ -3995,6 +4037,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField midtxt1;
     private javax.swing.JTextField partstxt;
     private javax.swing.JTextField partstxt1;
+    private javax.swing.JPasswordField pwd;
     private javax.swing.JTextField reasontxt;
     private javax.swing.JTextField reasontxt1;
     private javax.swing.JTextField sdatetxt;
@@ -4004,27 +4047,18 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton timesub;
     private javax.swing.JButton timesub1;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAddress1;
     private javax.swing.JTextField txtCity1;
     private javax.swing.JTextField txtCity2;
-    private javax.swing.JTextField txtCity3;
-    private javax.swing.JTextField txtCity4;
     private javax.swing.JTextField txtDOB;
-    private javax.swing.JTextField txtDOB1;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEmail1;
     private javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtFName1;
     private javax.swing.JTextField txtLName1;
-    private javax.swing.JTextField txtLName2;
     private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtPhone1;
     private javax.swing.JTextField txtRegNo;
-    private javax.swing.JTextField txtRegNo1;
     private javax.swing.JTextField txtaddress2;
-    private javax.swing.JTextField txtaddress3;
     private javax.swing.JLabel txtid;
     private javax.swing.JLabel txtid1;
+    private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 
     
