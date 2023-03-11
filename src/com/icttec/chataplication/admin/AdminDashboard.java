@@ -11,8 +11,12 @@ import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -2382,9 +2386,9 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         AdUpdate1.setBackground(new java.awt.Color(0, 0, 102));
         AdUpdate1.setText("Update");
-        AdUpdate1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdUpdate1ActionPerformed(evt);
+        AdUpdate1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AdUpdate1MouseClicked(evt);
             }
         });
         Setting.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 107, 40));
@@ -2826,17 +2830,17 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     public void setAdmin(Users adminUser){
         this.adminUser=adminUser;
-        onLoad();
+        onLoad(getAdmin());
     }
     
     public Users getAdmin(){
         return adminUser;
     }
     
-    private void onLoad(){
-        adName1.setText(getAdmin().getNickname());
+    private void onLoad(Users dfUser){
+        adName1.setText(dfUser.getNickname());
         
-        byte[] profile_image = getAdmin().getProfileImage();
+        byte[] profile_image = dfUser.getProfileImage();
         if(profile_image != null){
 
                     Utility utility = new Utility();
@@ -3675,10 +3679,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel126MouseClicked
 
-    private void AdUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdUpdate1ActionPerformed
-
     private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
         if(ShowPassword1.isSelected()){
             pwd.setEchoChar((char)0);
@@ -3704,9 +3704,52 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adGender1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void AdUpdate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdUpdate1MouseClicked
+       byte[] image = null;
+       
+       ImageIcon avatar = (ImageIcon) edite_profie_pic.getIcon();
+            if (avatar != null) {
+                Utility utility = new Utility();
+                try {
+                 
+                    BufferedImage bImage = utility.ImageIconToBufferedImage(avatar);
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    ImageIO.write(bImage, "png", bos);
+                    image = bos.toByteArray();
+
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this,"Error: "+ex.getMessage());
+                }
+
+            }
+            
+        Users updateusers = new Users();
+        updateusers.setId(getAdmin().getId());
+        updateusers.setEmail(email.getText().trim());
+        updateusers.setUsername(uname.getText().trim());
+        updateusers.setNickname(fname.getText().trim());
+        updateusers.setPassword(pwd.getText().trim());
+        updateusers.setProfileImage(image);
+        updateusers.setUserType(getAdmin().getUserType());
+
+
+        String cpassword = cpwd.getText().trim();
+        
+            
+        DBManager dbManager = new DBManager();
+      
+        if (dbManager.update(updateusers)) {
+             onLoad(updateusers);
+             JOptionPane.showMessageDialog(this,"User updated successfully..");          
+        } else {
+            JOptionPane.showMessageDialog(this,"User can not updated!");
+        }
+
+//        img_profile2.setIcon(avatar);
+//        img_profile2.setIcon(avatar);
+    }//GEN-LAST:event_AdUpdate1MouseClicked
+
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

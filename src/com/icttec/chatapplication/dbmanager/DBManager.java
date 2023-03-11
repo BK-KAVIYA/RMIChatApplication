@@ -8,6 +8,7 @@ package com.icttec.chatapplication.dbmanager;
 import com.icttec.chatapplication.dao.HibernateUtil;
 import com.icttec.chatapplication.entity.Files;
 import com.icttec.chatapplication.entity.Groups;
+import com.icttec.chatapplication.entity.Users;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -57,9 +58,32 @@ public class DBManager {
     
     }
     
+       public boolean update(Users udUser) {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        Transaction tran = sess.beginTransaction();
+
+//        Users user = (Users) sess.load(Users.class, id);
+//        user.setProfileImage(img);
+//        user.setUsername(username);
+//        user.setNickname(nickname);
+//        user.setPassword(password);
+        
+        try {
+        sess.update(udUser);
+        tran.commit();
+        sess.close();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("Exeption Occur "+e.getMessage());
+            return false;
+        }
+        
+    }
+    
    public void initiateMessafeFile(String chat_name) {
 
-       Session sess = HibernateUtil.getSessionFactory().openSession();
+        Session sess = HibernateUtil.getSessionFactory().openSession();
         String sql = "FROM Groups WHERE name='" + chat_name + "'";
         Query query = sess.createQuery(sql);
         List Group = query.list();
