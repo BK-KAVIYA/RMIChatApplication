@@ -53,7 +53,7 @@ public class LoginImp implements LoginDAO{
             
 
                     switch(user.getUserType()){
-                        case "admin":
+                        case "Admin":
                           
                             AdminDashboard admindashboard = new AdminDashboard();
 //                            Users adUsers = new Users();
@@ -64,7 +64,7 @@ public class LoginImp implements LoginDAO{
                             admindashboard.show();
                             
                             break;
-                        case "user":
+                        case "User":
                             
                             ClientDashboard driverdashboard = new ClientDashboard();
                             Users clUsers = new Users();

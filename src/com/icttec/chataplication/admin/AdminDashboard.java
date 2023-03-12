@@ -299,7 +299,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
-        adGender1 = new javax.swing.JComboBox<String>();
+        usertype = new javax.swing.JComboBox<String>();
         jLabel116 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
@@ -2329,15 +2329,17 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel115.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel115.setText("Email");
         Setting.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 90, 29));
+
+        email.setEditable(false);
         Setting.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 260, 32));
 
-        adGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-        adGender1.addActionListener(new java.awt.event.ActionListener() {
+        usertype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "User" }));
+        usertype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adGender1ActionPerformed(evt);
+                usertypeActionPerformed(evt);
             }
         });
-        Setting.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
+        Setting.add(usertype, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
 
         jLabel116.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel116.setText("Gender");
@@ -2865,6 +2867,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             email.setText(getAdmin().getEmail());
             pwd.setText(getAdmin().getPassword());
             cpwd.setText(getAdmin().getPassword());
+            usertype.setSelectedItem(getAdmin().getUserType());
             
             byte[] profile_image = getAdmin().getProfileImage();
             
@@ -3700,9 +3703,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel112MouseClicked
 
-    private void adGender1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adGender1ActionPerformed
+    private void usertypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_adGender1ActionPerformed
+    }//GEN-LAST:event_usertypeActionPerformed
 
     private void AdUpdate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdUpdate1MouseClicked
        byte[] image = null;
@@ -3737,13 +3740,21 @@ public class AdminDashboard extends javax.swing.JFrame {
         
             
         DBManager dbManager = new DBManager();
-      
-        if (dbManager.update(updateusers)) {
-             onLoad(updateusers);
-             JOptionPane.showMessageDialog(this,"User updated successfully..");          
-        } else {
-            JOptionPane.showMessageDialog(this,"User can not updated!");
-        }
+       if((email.getText().equals("")||uname.getText().equals("")||fname.getText().equals("")||pwd.getText().equals("")||cpwd.getText().equals(""))){
+            JOptionPane.showMessageDialog(this,"please fill al the fields!!"); 
+       }else{
+           if(pwd.getText().equalsIgnoreCase(cpassword)){
+                if (dbManager.update(updateusers)) {
+                    onLoad(updateusers);
+                    JOptionPane.showMessageDialog(this,"User updated successfully..");          
+                } else {
+                    JOptionPane.showMessageDialog(this,"User can not updated!");
+                }
+           }else{
+               JOptionPane.showMessageDialog(this,"password not match!");
+           }
+       }
+       
 
 //        img_profile2.setIcon(avatar);
 //        img_profile2.setIcon(avatar);
@@ -3823,7 +3834,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel TAmountDisplay;
     private javax.swing.JPasswordField adCPwd;
     private javax.swing.JComboBox<String> adGender;
-    private javax.swing.JComboBox<String> adGender1;
     private javax.swing.JLabel adName;
     private javax.swing.JLabel adName1;
     private javax.swing.JPasswordField adPwd;
@@ -4102,6 +4112,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel txtid;
     private javax.swing.JLabel txtid1;
     private javax.swing.JTextField uname;
+    private javax.swing.JComboBox<String> usertype;
     // End of variables declaration//GEN-END:variables
 
     
