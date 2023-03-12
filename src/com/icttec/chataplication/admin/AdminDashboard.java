@@ -16,11 +16,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -331,20 +333,19 @@ public class AdminDashboard extends javax.swing.JFrame {
         groupname = new javax.swing.JTextField();
         cadd3 = new javax.swing.JButton();
         csearch1 = new javax.swing.JButton();
-        CardPri10 = new javax.swing.JPanel();
+        UserList = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel24 = new javax.swing.JPanel();
         jLabel145 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
         timesub1 = new javax.swing.JButton();
-        jLabel146 = new javax.swing.JLabel();
         jLabel147 = new javax.swing.JLabel();
         jLabel148 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        CarID1 = new javax.swing.JTextField();
-        MaintanceID1 = new javax.swing.JTextField();
+        clientList = new javax.swing.JTable();
+        searchMail = new javax.swing.JTextField();
+        jLabel158 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jLabel149 = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
@@ -2577,8 +2578,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel145.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel145.setText("Maintanance Id");
-        jPanel24.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 22));
+        jLabel145.setText("Email");
+        jPanel24.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 90, 22));
 
         jButton15.setBackground(new java.awt.Color(0, 0, 102));
         jButton15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -2589,60 +2590,60 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton15MouseClicked(evt);
             }
         });
-        jPanel24.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 80, 30));
+        jPanel24.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, 30));
 
         timesub1.setBackground(new java.awt.Color(0, 0, 102));
         timesub1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         timesub1.setForeground(new java.awt.Color(255, 255, 255));
-        timesub1.setText("Search");
-        timesub1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timesub1ActionPerformed(evt);
+        timesub1.setText("Delete");
+        timesub1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                timesub1MouseClicked(evt);
             }
         });
-        jPanel24.add(timesub1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, 30));
-
-        jLabel146.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel146.setText("Car Id");
-        jPanel24.add(jLabel146, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 86, 22));
+        jPanel24.add(timesub1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 80, 30));
 
         jLabel147.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel147.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel147.setText("View Maintanance");
+        jLabel147.setText("View User List");
         jPanel24.add(jLabel147, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 11, -1, -1));
 
         jLabel148.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel148.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel148.setText("Vehicle Maintanance Details");
-        jPanel24.add(jLabel148, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        jLabel148.setText("Search");
+        jPanel24.add(jLabel148, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        clientList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "M ID", "Reason", "Parts", "Cost", "Car ID", "Invoice no"
+                "ID", "UName", "NName", "Email", "UType"
             }
         ));
-        jTable4.setGridColor(new java.awt.Color(0, 0, 102));
-        jTable4.setSelectionBackground(new java.awt.Color(0, 153, 153));
-        jTable4.setSelectionForeground(new java.awt.Color(255, 255, 204));
-        jScrollPane12.setViewportView(jTable4);
+        clientList.setGridColor(new java.awt.Color(0, 0, 102));
+        clientList.setSelectionBackground(new java.awt.Color(0, 153, 153));
+        clientList.setSelectionForeground(new java.awt.Color(255, 255, 204));
+        jScrollPane12.setViewportView(clientList);
 
         jPanel24.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 570, 100));
-        jPanel24.add(CarID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 130, 30));
 
-        MaintanceID1.addActionListener(new java.awt.event.ActionListener() {
+        searchMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MaintanceID1ActionPerformed(evt);
+                searchMailActionPerformed(evt);
             }
         });
-        jPanel24.add(MaintanceID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 130, 30));
+        jPanel24.add(searchMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 130, 30));
 
-        jTabbedPane5.addTab("View Maintanance", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/timetableListr.png")), jPanel24); // NOI18N
+        jLabel158.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel158.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel158.setText("Application User Details");
+        jPanel24.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+
+        jTabbedPane5.addTab("User Management", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/timetableListr.png")), jPanel24); // NOI18N
 
         jPanel25.setBackground(new java.awt.Color(255, 255, 255));
         jPanel25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102)));
@@ -2812,18 +2813,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel23.add(jLabel157, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
-        javax.swing.GroupLayout CardPri10Layout = new javax.swing.GroupLayout(CardPri10);
-        CardPri10.setLayout(CardPri10Layout);
-        CardPri10Layout.setHorizontalGroup(
-            CardPri10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout UserListLayout = new javax.swing.GroupLayout(UserList);
+        UserList.setLayout(UserListLayout);
+        UserListLayout.setHorizontalGroup(
+            UserListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
-        CardPri10Layout.setVerticalGroup(
-            CardPri10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        UserListLayout.setVerticalGroup(
+            UserListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        CardAdmin.add(CardPri10, "CardPri4");
+        CardAdmin.add(UserList, "UserList");
 
         getContentPane().add(CardAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
@@ -3544,9 +3545,19 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menucourse1ActionPerformed
 
     private void menunotice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menunotice1ActionPerformed
-        // TODO add your handling code here:
+       cardLayout1.show(CardAdmin,"UserList");
+       UserList();      
     }//GEN-LAST:event_menunotice1ActionPerformed
 
+    private void UserList(){
+        DefaultTableModel UFT=(DefaultTableModel) clientList.getModel();
+       UFT.setRowCount(0);
+       DBManager dbManager = new DBManager();
+       List<Users> clientList=dbManager.list("User");
+       for(Users client:clientList){
+            UFT.addRow(new Object[]{client.getId(),client.getUsername(),client.getNickname(),client.getEmail(),client.getUserType()});
+        }
+    }
     private void jLabel100MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel100MouseClicked
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Log out?", "Warnning",JOptionPane.YES_NO_OPTION);
 
@@ -3587,16 +3598,22 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel144MouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
-        // TODO add your handling code here:
+       String Email=searchMail.getText();
+       DefaultTableModel UFT=(DefaultTableModel) clientList.getModel();
+       UFT.setRowCount(0);
+       DBManager dbManager = new DBManager();
+       List<Users> clientList=dbManager.searchUser("User",Email);
+       for(Users client:clientList){
+            UFT.addRow(new Object[]{client.getId(),client.getUsername(),client.getNickname(),client.getEmail(),client.getUserType()});
+        }
+       if(UFT.getRowCount()==0){
+           JOptionPane.showMessageDialog(this,"No User Found!");
+       }
     }//GEN-LAST:event_jButton15MouseClicked
 
-    private void timesub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timesub1ActionPerformed
+    private void searchMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_timesub1ActionPerformed
-
-    private void MaintanceID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintanceID1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MaintanceID1ActionPerformed
+    }//GEN-LAST:event_searchMailActionPerformed
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
         // TODO add your handling code here:
@@ -3760,6 +3777,33 @@ public class AdminDashboard extends javax.swing.JFrame {
 //        img_profile2.setIcon(avatar);
     }//GEN-LAST:event_AdUpdate1MouseClicked
 
+    private void timesub1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timesub1MouseClicked
+       
+       String deleteUser =searchMail.getText();
+       int id=0;
+
+       DBManager dbManager = new DBManager();
+       List<Users> clientList=dbManager.searchUser("User",deleteUser);
+       for(Users client:clientList){
+            id=client.getId();
+        }
+       
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Delete?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+            if(dbManager.deleteUser(id)){
+                   JOptionPane.showMessageDialog(this,"User Deleted!");
+                   UserList();
+                   searchMail.setText("");
+            }else{
+                   JOptionPane.showMessageDialog(this,"Something wend wrong!");
+             }
+        }
+ 
+
+
+    }//GEN-LAST:event_timesub1MouseClicked
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -3803,10 +3847,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel BookCount1;
     private javax.swing.JTextField CID1;
     private javax.swing.JTextField CarID;
-    private javax.swing.JTextField CarID1;
     private javax.swing.JPanel CardAdmin;
     private javax.swing.JPanel CardPri1;
-    private javax.swing.JPanel CardPri10;
     private javax.swing.JPanel CardPri2;
     private javax.swing.JPanel CardPri3;
     private javax.swing.JPanel CardPri4;
@@ -3824,7 +3866,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Invoice;
     private rojeru_san.complementos.RSTableMetro InvoiceTable;
     private javax.swing.JTextField MaintanceID;
-    private javax.swing.JTextField MaintanceID1;
     private javax.swing.JTextField ScarId;
     private javax.swing.JButton Search;
     private javax.swing.JButton Search1;
@@ -3832,6 +3873,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JCheckBox ShowPassword1;
     private javax.swing.JLabel TAmountDisplay;
+    private javax.swing.JPanel UserList;
     private javax.swing.JPasswordField adCPwd;
     private javax.swing.JComboBox<String> adGender;
     private javax.swing.JLabel adName;
@@ -3864,6 +3906,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField cartxt;
     private javax.swing.JButton cdelete;
     private javax.swing.JButton cdelete1;
+    private javax.swing.JTable clientList;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
     private javax.swing.JPasswordField cpwd;
@@ -3936,7 +3979,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel143;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel145;
-    private javax.swing.JLabel jLabel146;
     private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel149;
@@ -3949,6 +3991,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
+    private javax.swing.JLabel jLabel158;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -4074,7 +4117,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblimage;
     private rojerusan.RSMaterialButtonRectangle manage_booking_search;
     private rojerusan.RSMaterialButtonRectangle menuReport;
@@ -4094,6 +4136,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField reasontxt;
     private javax.swing.JTextField reasontxt1;
     private javax.swing.JTextField sdatetxt;
+    private javax.swing.JTextField searchMail;
     private javax.swing.JLabel stCount;
     private javax.swing.JLabel stCount1;
     private javax.swing.JComboBox statustxt;

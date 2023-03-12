@@ -23,11 +23,10 @@ import org.hibernate.Transaction;
  *
  * @author KA VI YA
  */
-public class DBManager {
-    
-    
-    public boolean ceratChat(String name,String Description){
-        
+public class DBManager implements DBManagerInterface{
+
+    @Override
+    public boolean ceratChat(String name, String Description) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = sess.beginTransaction();
         Groups groups = new Groups();
@@ -57,8 +56,9 @@ public class DBManager {
         }
     
     }
-    
-       public boolean update(Users udUser) {
+
+    @Override
+    public boolean update(Users udUser) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
         Transaction tran = sess.beginTransaction();
 
@@ -78,11 +78,10 @@ public class DBManager {
             System.out.println("Exeption Occur "+e.getMessage());
             return false;
         }
-        
     }
-    
-   public void initiateMessafeFile(String chat_name) {
 
+    @Override
+    public void initiateMessafeFile(String chat_name) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
         String sql = "FROM Groups WHERE name='" + chat_name + "'";
         Query query = sess.createQuery(sql);
@@ -106,6 +105,47 @@ public class DBManager {
         t.commit();
         sess.close();
     }
+
+    @Override
+    public List<Users> list(String usertType) {
+         
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        String sql = "FROM Users WHERE is_deleted=0 AND user_type='" + usertType + "'";
+        Query qu = sess.createQuery(sql);
+        List User = qu.list();
+        return User; 
+
+    }
+
+    @Override
+    public List<Users> searchUser(String userType,String Email) {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        String sql = "FROM Users WHERE is_deleted=0 AND email='"+Email+"' AND user_type='" + userType + "'";
+        Query qu = sess.createQuery(sql);
+        List User = qu.list();
+        return User; 
+    }
+
+    @Override
+    public boolean deleteUser(int userID) {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        Transaction tran = sess.beginTransaction();
+        
+        Object object = sess.load(Users.class, userID);
+        try{
+            sess.delete(object);      
+            tran.commit();
+            sess.close();
+            return true;
+        }catch(Exception ex){
+            System.out.println("Exception Occur "+ex.getMessage());
+            return false;
+        }
+        
+    }
+    
+    
+    
    
    
 }
