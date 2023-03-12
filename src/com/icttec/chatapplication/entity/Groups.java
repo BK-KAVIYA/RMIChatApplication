@@ -13,7 +13,7 @@ public class Groups  implements java.io.Serializable {
      private Integer id;
      private String name;
      private String description;
-     private boolean status;
+     private int status;
      private Date createdDate;
      private Date createdTime;
      private int isDeleted;
@@ -22,13 +22,13 @@ public class Groups  implements java.io.Serializable {
     }
 
 	
-    public Groups(String name, String description, boolean status, int isDeleted) {
+    public Groups(String name, String description, int status, int isDeleted) {
         this.name = name;
         this.description = description;
         this.status = status;
         this.isDeleted = isDeleted;
     }
-    public Groups(String name, String description, boolean status, Date createdDate, Date createdTime, int isDeleted) {
+    public Groups(String name, String description, int status, Date createdDate, Date createdTime, int isDeleted) {
        this.name = name;
        this.description = description;
        this.status = status;
@@ -58,11 +58,11 @@ public class Groups  implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public boolean isStatus() {
+    public int isStatus() {
         return this.status;
     }
     
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
     public Date getCreatedDate() {

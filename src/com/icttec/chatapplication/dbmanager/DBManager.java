@@ -37,9 +37,9 @@ public class DBManager implements DBManagerInterface{
         groups.setName(name);
         groups.setDescription(Description);
         groups.setCreatedDate(date);
-        groups.setStatus(false);
+        groups.setStatus(0);
         groups.setCreatedTime(time);
-        groups.setStatus(false);
+        groups.setStatus(0);
 
         try {
             sess.save(groups);
@@ -142,6 +142,49 @@ public class DBManager implements DBManagerInterface{
             return false;
         }
         
+    }
+
+    @Override
+    public List getChats() {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        String sql = "FROM Groups WHERE is_deleted=0";
+        Query qu = sess.createQuery(sql);
+        List Group = qu.list();
+        return Group;
+    }
+
+    @Override
+    public void putOffline(int Id) {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        Transaction tran = sess.beginTransaction();
+
+        Groups groups = (Groups) sess.load(Groups.class, Id);
+        groups.setStatus(0);
+
+        sess.update(groups);
+        tran.commit();
+        System.out.println(Id + "is offline...");
+        sess.close();
+    }
+
+    @Override
+    public boolean putOnline(int ChatId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isOnline(int chatId) {
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        String sql = "FROM Groups WHERE status=1 AND id=" + chatId;
+        Query qu = sess.createQuery(sql);
+        List Group = qu.list();
+
+        Iterator i = Group.iterator();
+        if (i.hasNext()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     

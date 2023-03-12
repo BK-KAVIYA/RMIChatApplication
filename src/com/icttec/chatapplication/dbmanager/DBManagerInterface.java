@@ -19,5 +19,9 @@ public interface DBManagerInterface {
     public List<Users> list(String usertType);
     public List<Users> searchUser(String userType,String Email);
     public boolean deleteUser(int userID);
+    public List getChats();
+    public void putOffline(int Id);
+    public boolean putOnline(int ChatId);
+    public boolean isOnline(int chatId);
     
 }

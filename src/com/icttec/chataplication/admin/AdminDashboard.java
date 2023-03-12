@@ -7,20 +7,26 @@ package com.icttec.chataplication.admin;
 
 import com.icttec.chataplication.main.ChatLogin;
 import com.icttec.chatapplication.dbmanager.DBManager;
+import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -281,20 +287,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         CardAdmin = new javax.swing.JPanel();
         GroupList = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel104 = new javax.swing.JLabel();
-        jLabel105 = new javax.swing.JLabel();
-        stCount1 = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel106 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
-        DriCount1 = new javax.swing.JLabel();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel108 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        BookCount1 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
+        group_panel = new javax.swing.JPanel();
         Setting = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -2150,102 +2145,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jLabel103.setText("Admin Dashboard->");
 
-        jPanel17.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-
-        jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/carsDashbord5.png"))); // NOI18N
-
-        jLabel105.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel105.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel105.setText("CARS");
-
-        stCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        stCount1.setForeground(new java.awt.Color(51, 153, 255));
-        stCount1.setText("50");
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel105)
-                    .addComponent(stCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel18.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-
-        jLabel106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/driver.png"))); // NOI18N
-
-        jLabel107.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel107.setText("DRIVERS");
-
-        DriCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        DriCount1.setForeground(new java.awt.Color(51, 153, 255));
-        DriCount1.setText("20");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel107)
-                    .addComponent(DriCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(DriCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel106, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-        );
-
-        jPanel19.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-        jPanel19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel108.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/booking2.png"))); // NOI18N
-        jLabel108.setText("jLabel10");
-        jPanel19.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 200, 113));
-
-        jLabel109.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel109.setText("BOOKING");
-        jPanel19.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, 25));
-
-        BookCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        BookCount1.setForeground(new java.awt.Color(51, 153, 255));
-        BookCount1.setText("15");
-        jPanel19.add(BookCount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 60, 50));
-
         jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel110.setText("jLabel18");
         jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2262,6 +2161,9 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        group_panel.setBackground(new java.awt.Color(28, 36, 47));
+        group_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         javax.swing.GroupLayout GroupListLayout = new javax.swing.GroupLayout(GroupList);
         GroupList.setLayout(GroupListLayout);
         GroupListLayout.setHorizontalGroup(
@@ -2269,18 +2171,16 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(GroupListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
                 .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
-            .addGroup(GroupListLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
-                .addContainerGap(215, Short.MAX_VALUE))
+            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GroupListLayout.createSequentialGroup()
+                    .addContainerGap(86, Short.MAX_VALUE)
+                    .addComponent(group_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(165, Short.MAX_VALUE)))
         );
         GroupListLayout.setVerticalGroup(
             GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2291,13 +2191,12 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel110)
                         .addComponent(jLabel111)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(548, Short.MAX_VALUE))
+            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GroupListLayout.createSequentialGroup()
+                    .addContainerGap(100, Short.MAX_VALUE)
+                    .addComponent(group_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(155, Short.MAX_VALUE)))
         );
 
         CardAdmin.add(GroupList, "CardPri1");
@@ -3671,7 +3570,84 @@ public class AdminDashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Group can not create!");
         }
     }//GEN-LAST:event_cadd2MouseClicked
+int y = 13;
 
+    public void load_group(boolean isSignin) {
+        y = 13;
+        DBManager dbManager = new DBManager();
+        List groups = dbManager.getChats();
+
+        group_panel.removeAll();
+        //group_panel.repaint();
+        //group_panel.revalidate();
+
+        for (Iterator iterator = groups.iterator(); iterator.hasNext();) {
+            Groups next = (Groups) iterator.next();
+
+            if (isSignin) {
+                //put all chats offline before login admin
+                dbManager.putOffline(next.getId());
+            }
+
+            JPanel group = new javax.swing.JPanel();
+            group.setBackground(new java.awt.Color(44, 47, 62));
+            group.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            JLabel g_action = new javax.swing.JLabel();
+
+            if (dbManager.isOnline(next.getId())) {
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/end.png"))); // NOI18N
+            } else {
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/start.png"))); // NOI18N
+            }
+
+            g_action.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    group_action(next.getId(), g_action);
+
+                }
+            });
+
+            JLabel g_des = new javax.swing.JLabel();
+            g_des.setForeground(new java.awt.Color(255, 255, 255));
+            g_des.setText("<html>" + next.getDescription() + "</html>");
+
+            JLabel g_name = new javax.swing.JLabel();
+            g_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+            g_name.setForeground(new java.awt.Color(255, 255, 255));
+            g_name.setText(next.getName());
+            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 29));
+            group.add(g_des, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 36, 163, 33));
+            group.add(g_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
+            group_panel.add(group, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y, 294, 90));
+
+            y += 110;
+        }
+
+        
+     
+    }
+    
+    
+    public void group_action(int chat_id, JLabel g_action) {
+
+        File btn_icon = new File("");
+        String abspath = btn_icon.getAbsolutePath();
+        DBManager dbManager = new DBManager();
+
+        if (dbManager.isOnline(chat_id)) {
+            dbManager.putOffline(chat_id);
+            ImageIcon icon = new ImageIcon(abspath + "\\src\\app\\images\\start.png");
+            g_action.setIcon(icon);
+        } else if (dbManager.putOnline(chat_id)) {
+            ImageIcon icon = new ImageIcon(abspath + "\\src\\app\\images\\end.png");
+            g_action.setIcon(icon);
+
+            //start chat server and nofify observers
+            start_server(chat_id);
+
+        }
+    }
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
 
         JFileChooser chooser = new JFileChooser(); //open image file file
@@ -3844,7 +3820,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField Amount;
     private javax.swing.JTextField BID1;
     private javax.swing.JLabel BookCount;
-    private javax.swing.JLabel BookCount1;
     private javax.swing.JTextField CID1;
     private javax.swing.JTextField CarID;
     private javax.swing.JPanel CardAdmin;
@@ -3861,7 +3836,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel DashPhoto;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
-    private javax.swing.JLabel DriCount1;
     private javax.swing.JPanel GroupList;
     private javax.swing.JPanel Invoice;
     private rojeru_san.complementos.RSTableMetro InvoiceTable;
@@ -3924,6 +3898,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel edite_profie_pic;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fname;
+    private javax.swing.JPanel group_panel;
     private javax.swing.JTextField groupdes;
     private javax.swing.JTextField groupname;
     private javax.swing.JTextField ivoicetxt;
@@ -3949,12 +3924,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
-    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
@@ -4091,9 +4060,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel22;
@@ -4138,7 +4104,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField sdatetxt;
     private javax.swing.JTextField searchMail;
     private javax.swing.JLabel stCount;
-    private javax.swing.JLabel stCount1;
     private javax.swing.JComboBox statustxt;
     private javax.swing.JButton timesub;
     private javax.swing.JButton timesub1;
