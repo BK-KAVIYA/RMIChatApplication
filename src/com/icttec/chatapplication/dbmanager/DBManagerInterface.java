@@ -23,5 +23,6 @@ public interface DBManagerInterface {
     public void putOffline(int Id);
     public boolean putOnline(int ChatId);
     public boolean isOnline(int chatId);
+    public boolean checkAllOffline();
     
 }

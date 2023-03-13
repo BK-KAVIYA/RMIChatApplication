@@ -169,7 +169,23 @@ public class DBManager implements DBManagerInterface{
 
     @Override
     public boolean putOnline(int ChatId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (checkAllOffline()) {
+
+            Session sess = HibernateUtil.getSessionFactory().openSession();
+            Transaction tran = sess.beginTransaction();
+
+            Groups group = (Groups) sess.load(Groups.class, ChatId);
+            group.setStatus(1);
+
+            sess.update(group);
+            tran.commit();
+            System.out.println(ChatId + "is online...");
+            sess.close();
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -184,6 +200,21 @@ public class DBManager implements DBManagerInterface{
             return true;
         } else {
             return false;
+        }
+    }
+
+    @Override
+    public boolean checkAllOffline() {
+       Session sess = HibernateUtil.getSessionFactory().openSession();
+        String sql = "FROM Groups WHERE status=1";
+        Query qu = sess.createQuery(sql);
+        List Group = qu.list();
+
+        Iterator i = Group.iterator();
+        if (i.hasNext()) {
+            return false;
+        } else {
+            return true;
         }
     }
     

@@ -6,9 +6,11 @@
 package com.icttec.chataplication.admin;
 
 import com.icttec.chataplication.main.ChatLogin;
+import com.icttec.chatapplication.client.ChatClient;
 import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
+import com.icttec.chatapplication.server.Server;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -18,7 +20,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.sql.PreparedStatement;
 import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -38,15 +39,19 @@ public class AdminDashboard extends javax.swing.JFrame {
 
 
     
-    PreparedStatement pst1;  
+    private int y;
     private static Users adminUser;
-    PreparedStatement insert;
-    PreparedStatement update;
     CardLayout cardLayout1;
+    ChatClient chatClient;
     
     public AdminDashboard() {
         initComponents();
         cardLayout1 =(CardLayout)(CardAdmin.getLayout());
+        loadGroup(true);
+//        chatClient = new ChatClient(getAdmin().getId(), user.getUsername(), user.getNickname(), user.getEmail());
+//                    //start client
+//                    load_client_groups();
+//                    this.start_client();
         
     }
 
@@ -77,7 +82,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         stCount = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         DriCount = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -289,7 +293,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel103 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
+        chat_list_scrollPane = new javax.swing.JScrollPane();
         group_panel = new javax.swing.JPanel();
+        jLabel159 = new javax.swing.JLabel();
         Setting = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -533,8 +539,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 0, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/driver.png"))); // NOI18N
-
         jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DRIVERS");
@@ -549,7 +553,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -564,7 +567,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(DriCount, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 102));
@@ -2161,8 +2163,15 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        group_panel.setBackground(new java.awt.Color(28, 36, 47));
+        chat_list_scrollPane.setBackground(new java.awt.Color(28, 36, 47));
+
+        group_panel.setBackground(new java.awt.Color(255, 255, 255));
         group_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        chat_list_scrollPane.setViewportView(group_panel);
+
+        jLabel159.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel159.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel159.setText("View Group List");
 
         javax.swing.GroupLayout GroupListLayout = new javax.swing.GroupLayout(GroupList);
         GroupList.setLayout(GroupListLayout);
@@ -2176,11 +2185,15 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
-            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GroupListLayout.createSequentialGroup()
-                    .addContainerGap(86, Short.MAX_VALUE)
-                    .addComponent(group_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(165, Short.MAX_VALUE)))
+            .addGroup(GroupListLayout.createSequentialGroup()
+                .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupListLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(chat_list_scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(GroupListLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel159)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         GroupListLayout.setVerticalGroup(
             GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2191,12 +2204,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel110)
                         .addComponent(jLabel111)))
-                .addContainerGap(548, Short.MAX_VALUE))
-            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GroupListLayout.createSequentialGroup()
-                    .addContainerGap(100, Short.MAX_VALUE)
-                    .addComponent(group_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(155, Short.MAX_VALUE)))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel159)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chat_list_scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         CardAdmin.add(GroupList, "CardPri1");
@@ -3570,10 +3582,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Group can not create!");
         }
     }//GEN-LAST:event_cadd2MouseClicked
-int y = 13;
 
-    public void load_group(boolean isSignin) {
-        y = 13;
+
+    private void loadGroup(boolean isSignin) {
+        y = 20;
         DBManager dbManager = new DBManager();
         List groups = dbManager.getChats();
 
@@ -3585,25 +3597,26 @@ int y = 13;
             Groups next = (Groups) iterator.next();
 
             if (isSignin) {
-                //put all chats offline before login admin
+                //put all chats offline before the admin login
                 dbManager.putOffline(next.getId());
             }
 
             JPanel group = new javax.swing.JPanel();
-            group.setBackground(new java.awt.Color(44, 47, 62));
+            group.setBackground(new java.awt.Color(44, 47, 255));
             group.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             JLabel g_action = new javax.swing.JLabel();
 
             if (dbManager.isOnline(next.getId())) {
-                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/end.png"))); // NOI18N
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/stop.png"))); // NOI18N
             } else {
-                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/start.png"))); // NOI18N
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/start.png"))); // NOI18N
             }
 
             g_action.addMouseListener(new MouseAdapter() {
+                @Override
                 public void mouseClicked(MouseEvent e) {
-                    group_action(next.getId(), g_action);
+                    groupAction(next.getId(), g_action);
 
                 }
             });
@@ -3616,35 +3629,37 @@ int y = 13;
             g_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
             g_name.setForeground(new java.awt.Color(255, 255, 255));
             g_name.setText(next.getName());
-            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 29));
+            
+            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, 29));
             group.add(g_des, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 36, 163, 33));
             group.add(g_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
-            group_panel.add(group, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y, 294, 90));
+            group_panel.add(group, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y, 470, 90));
 
-            y += 110;
+            y += 100;
         }
-
-        
-     
+ 
     }
     
     
-    public void group_action(int chat_id, JLabel g_action) {
+    public void groupAction(int chatId, JLabel Action) {
 
         File btn_icon = new File("");
-        String abspath = btn_icon.getAbsolutePath();
+        String absolutespath = btn_icon.getAbsolutePath();
         DBManager dbManager = new DBManager();
+        Server server = new Server();
 
-        if (dbManager.isOnline(chat_id)) {
-            dbManager.putOffline(chat_id);
-            ImageIcon icon = new ImageIcon(abspath + "\\src\\app\\images\\start.png");
-            g_action.setIcon(icon);
-        } else if (dbManager.putOnline(chat_id)) {
-            ImageIcon icon = new ImageIcon(abspath + "\\src\\app\\images\\end.png");
-            g_action.setIcon(icon);
+        if (dbManager.isOnline(chatId)) {
+            dbManager.putOffline(chatId);
+            ImageIcon icon = new ImageIcon(absolutespath + "\\src\\PHOTOS\\start.png");
+            Action.setIcon(icon);
+            server.stopServer();
+        } else if (dbManager.putOnline(chatId)) {
+            ImageIcon icon = new ImageIcon(absolutespath + "\\src\\PHOTOS\\stop.png");
+            Action.setIcon(icon);
 
-            //start chat server and nofify observers
-            start_server(chat_id);
+            //start server and nofify  the observers
+            
+            server.startServer(chatId);
 
         }
     }
@@ -3880,6 +3895,7 @@ int y = 13;
     private javax.swing.JTextField cartxt;
     private javax.swing.JButton cdelete;
     private javax.swing.JButton cdelete1;
+    private javax.swing.JScrollPane chat_list_scrollPane;
     private javax.swing.JTable clientList;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
@@ -3924,7 +3940,6 @@ int y = 13;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
@@ -3961,6 +3976,7 @@ int y = 13;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
     private javax.swing.JLabel jLabel158;
+    private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

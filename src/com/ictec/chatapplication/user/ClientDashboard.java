@@ -265,22 +265,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel102 = new javax.swing.JLabel();
         menutimetable2 = new rojerusan.RSMaterialButtonRectangle();
         CardjPannel1 = new javax.swing.JPanel();
-        CardPri7 = new javax.swing.JPanel();
-        jLabel103 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel104 = new javax.swing.JLabel();
-        jLabel105 = new javax.swing.JLabel();
-        stCount1 = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel106 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
-        DriCount1 = new javax.swing.JLabel();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel108 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        BookCount1 = new javax.swing.JLabel();
-        jLabel110 = new javax.swing.JLabel();
-        jLabel111 = new javax.swing.JLabel();
         CardPri8 = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -378,6 +362,10 @@ public class ClientDashboard extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jLabel156 = new javax.swing.JLabel();
         jLabel157 = new javax.swing.JLabel();
+        CardPri7 = new javax.swing.JPanel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("Admin Dashboard");
@@ -2158,163 +2146,6 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         CardjPannel1.setLayout(new java.awt.CardLayout());
 
-        CardPri7.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel103.setText("Client Dashboard->");
-
-        jPanel17.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-
-        jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/carsDashbord5.png"))); // NOI18N
-
-        jLabel105.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel105.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel105.setText("CARS");
-
-        stCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        stCount1.setForeground(new java.awt.Color(51, 153, 255));
-        stCount1.setText("50");
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel105)
-                    .addComponent(stCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel18.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-
-        jLabel106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/driver.png"))); // NOI18N
-
-        jLabel107.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel107.setText("DRIVERS");
-
-        DriCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        DriCount1.setForeground(new java.awt.Color(51, 153, 255));
-        DriCount1.setText("20");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel107)
-                    .addComponent(DriCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(DriCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel106, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-        );
-
-        jPanel19.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-        jPanel19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel108.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/booking2.png"))); // NOI18N
-        jLabel108.setText("jLabel10");
-        jPanel19.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 200, 113));
-
-        jLabel109.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel109.setText("BOOKING");
-        jPanel19.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, 25));
-
-        BookCount1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        BookCount1.setForeground(new java.awt.Color(51, 153, 255));
-        BookCount1.setText("15");
-        jPanel19.add(BookCount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 60, 50));
-
-        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
-        jLabel110.setText("jLabel18");
-        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel110MouseClicked(evt);
-            }
-        });
-
-        jLabel111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
-        jLabel111.setText("jLabel29");
-        jLabel111.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel111MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout CardPri7Layout = new javax.swing.GroupLayout(CardPri7);
-        CardPri7.setLayout(CardPri7Layout);
-        CardPri7Layout.setHorizontalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(CardPri7Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
-                .addContainerGap(215, Short.MAX_VALUE))
-        );
-        CardPri7Layout.setVerticalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel110)
-                        .addComponent(jLabel111)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        CardjPannel1.add(CardPri7, "CardPri1");
-
         CardPri8.setBackground(new java.awt.Color(255, 255, 255));
         CardPri8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2927,6 +2758,54 @@ public class ClientDashboard extends javax.swing.JFrame {
         );
 
         CardjPannel1.add(CardPri10, "CardPri4");
+
+        CardPri7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        jLabel103.setText("Client Dashboard->");
+
+        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel110.setText("jLabel18");
+        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel110MouseClicked(evt);
+            }
+        });
+
+        jLabel111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel111.setText("jLabel29");
+        jLabel111.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel111MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CardPri7Layout = new javax.swing.GroupLayout(CardPri7);
+        CardPri7.setLayout(CardPri7Layout);
+        CardPri7Layout.setHorizontalGroup(
+            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CardPri7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
+                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        CardPri7Layout.setVerticalGroup(
+            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CardPri7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel110)
+                        .addComponent(jLabel111)))
+                .addContainerGap(548, Short.MAX_VALUE))
+        );
+
+        CardjPannel1.add(CardPri7, "CardPri1");
 
         getContentPane().add(CardjPannel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
@@ -3771,7 +3650,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField Amount;
     private javax.swing.JTextField BID1;
     private javax.swing.JLabel BookCount;
-    private javax.swing.JLabel BookCount1;
     private javax.swing.JTextField CID1;
     private javax.swing.JTextField CarID;
     private javax.swing.JTextField CarID1;
@@ -3791,7 +3669,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle Csearch5;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
-    private javax.swing.JLabel DriCount1;
     private javax.swing.JPanel Invoice;
     private rojeru_san.complementos.RSTableMetro InvoiceTable;
     private javax.swing.JTextField MaintanceID;
@@ -3880,12 +3757,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
-    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
@@ -4035,9 +3906,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel22;
@@ -4082,7 +3950,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField reasontxt1;
     private javax.swing.JTextField sdatetxt;
     private javax.swing.JLabel stCount;
-    private javax.swing.JLabel stCount1;
     private javax.swing.JComboBox statustxt;
     private javax.swing.JButton timesub;
     private javax.swing.JButton timesub1;

@@ -4,9 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dbmanager/DBManager.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/server/Server.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/dbmanager/DBManagerInterface.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/login/LoginImp.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/server/ServerDAO.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/service/Chat.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/client/ChatClient.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/entity/Groups.hbm.xml</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/admin/AdminDashboard.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/ictec/chatapplication/user/ClientDashboard.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/entity/Groups.java</file>
             <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chataplication/main/ChatLogin.java</file>
-            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/utility/Utility.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/service/ChatService.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/client/Message.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/entity/Users.java</file>
+            <file>file:/H:/JAVA%20Project/ChatApplication/ChatApplication/src/com/icttec/chatapplication/entity/Users.hbm.xml</file>
         </group>
     </open-files>
 </project-private>

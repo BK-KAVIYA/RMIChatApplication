@@ -10,5 +10,6 @@ package com.icttec.chatapplication.server;
  * @author KA VI YA
  */
 public interface ServerDAO {
-    public void start_server(int groupID);
+    public void startServer(int groupID);
+    public void stopServer();
 }
