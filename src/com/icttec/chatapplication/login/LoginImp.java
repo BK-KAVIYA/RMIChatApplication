@@ -56,8 +56,8 @@ public class LoginImp implements LoginDAO{
                         case "Admin":
                           
                             AdminDashboard admindashboard = new AdminDashboard();
-//                            Users adUsers = new Users();
-//                            adUsers.setNickname(nickname);
+//                          Users adUsers = new Users();
+//                          adUsers.setNickname(nickname);
                             admindashboard.setAdmin(user);
                             
                             loginPage.hide();
@@ -66,13 +66,14 @@ public class LoginImp implements LoginDAO{
                             break;
                         case "User":
                             
-                            ClientDashboard driverdashboard = new ClientDashboard();
-                            Users clUsers = new Users();
-                            clUsers.setNickname(nickname);
-                            driverdashboard.onLoad(clUsers);
+                            ClientDashboard clientDashboard = new ClientDashboard();
+                            clientDashboard.setClient(user);
+                            //Users clUsers = new Users();
+                            //clUsers.setNickname(nickname);
+                           // clientDashboard.onLoad(clUsers);
                             
                             loginPage.hide();
-                            driverdashboard.show();
+                            clientDashboard.show();
                             
                             break;
                         default :

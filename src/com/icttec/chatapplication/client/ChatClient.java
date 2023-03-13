@@ -5,10 +5,10 @@ import java.io.Serializable;
 
 
 public class ChatClient implements Serializable {
-    int id;
-    String username;
-    String nickname;
-    String email;
+    private int id;
+    private String username;
+    private String nickname;
+    private String email;
     //ImageIcon avatar;
 
     public ChatClient(int id, String username, String nickname, String email) {
@@ -18,6 +18,13 @@ public class ChatClient implements Serializable {
         this.email = email;
         //this.avatar = avatar;
     }
+
+//    public ChatClient(Integer id, String username, String nickname, String email) {
+//        this.id = id;
+//        this.username = username;
+//        this.nickname = nickname;
+//        this.email = email;
+//    }
 
     
     public int getId() {

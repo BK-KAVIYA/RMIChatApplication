@@ -7,10 +7,25 @@ package com.ictec.chatapplication.user;
 
 import com.icttec.chataplication.admin.*;
 import com.icttec.chataplication.main.ChatLogin;
+import com.icttec.chatapplication.client.ChatClient;
+import com.icttec.chatapplication.client.Message;
+import com.icttec.chatapplication.dbmanager.DBManager;
+import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
+import com.icttec.chatapplication.service.Chat;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.sql.PreparedStatement;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 
 /**
  *
@@ -20,14 +35,16 @@ public class ClientDashboard extends javax.swing.JFrame {
 
 
     
-    PreparedStatement pst1;  
-    private static String userID;
-    PreparedStatement insert;
-    PreparedStatement update;
+
+    ChatClient user;
+    Chat chat;
     CardLayout cardLayout1;
+    static int EGroupId;
+    Users client;
     
     public ClientDashboard() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -265,6 +282,20 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel102 = new javax.swing.JLabel();
         menutimetable2 = new rojerusan.RSMaterialButtonRectangle();
         CardjPannel1 = new javax.swing.JPanel();
+        GroupList = new javax.swing.JPanel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        chat_body_panel = new javax.swing.JPanel();
+        chatlist_title2 = new javax.swing.JLabel();
+        msgScrollPane = new javax.swing.JScrollPane();
+        chat_background = new javax.swing.JPanel();
+        chat_list_scrollPane = new javax.swing.JScrollPane();
+        client_chat_groups_panel = new javax.swing.JPanel();
+        msg_typer = new javax.swing.JTextField();
+        send_btn = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
         CardPri8 = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -362,10 +393,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jLabel156 = new javax.swing.JLabel();
         jLabel157 = new javax.swing.JLabel();
-        CardPri7 = new javax.swing.JPanel();
-        jLabel103 = new javax.swing.JLabel();
-        jLabel110 = new javax.swing.JLabel();
-        jLabel111 = new javax.swing.JLabel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("Admin Dashboard");
@@ -2146,6 +2173,125 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         CardjPannel1.setLayout(new java.awt.CardLayout());
 
+        GroupList.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        jLabel103.setText("Client Dashboard->");
+
+        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
+        jLabel110.setText("jLabel18");
+        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel110MouseClicked(evt);
+            }
+        });
+
+        jLabel111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel111.setText("jLabel29");
+        jLabel111.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel111MouseClicked(evt);
+            }
+        });
+
+        chat_body_panel.setBackground(new java.awt.Color(28, 36, 47));
+        chat_body_panel.setPreferredSize(new java.awt.Dimension(375, 500));
+        chat_body_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chatlist_title2.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        chatlist_title2.setForeground(new java.awt.Color(111, 117, 124));
+        chatlist_title2.setText("  Chats");
+        chat_body_panel.add(chatlist_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 300, 30));
+
+        chat_background.setBackground(new java.awt.Color(28, 36, 47));
+        chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chat_list_scrollPane.setBackground(new java.awt.Color(28, 36, 47));
+
+        client_chat_groups_panel.setBackground(new java.awt.Color(28, 36, 47));
+        client_chat_groups_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        chat_list_scrollPane.setViewportView(client_chat_groups_panel);
+
+        chat_background.add(chat_list_scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, -78, 510, 510));
+
+        msgScrollPane.setViewportView(chat_background);
+
+        chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 370, 420));
+
+        msg_typer.setBackground(new java.awt.Color(28, 36, 47));
+        msg_typer.setForeground(new java.awt.Color(255, 255, 255));
+        msg_typer.setBorder(null);
+        msg_typer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                msg_typerKeyPressed(evt);
+            }
+        });
+        chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 30));
+
+        send_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        send_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                send_btnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                send_btnMouseEntered(evt);
+            }
+        });
+        chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 40, 40));
+        chat_body_panel.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, 10));
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(chat_body_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addComponent(chat_body_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jLayeredPane1.setLayer(chat_body_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout GroupListLayout = new javax.swing.GroupLayout(GroupList);
+        GroupList.setLayout(GroupListLayout);
+        GroupListLayout.setHorizontalGroup(
+            GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
+                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(GroupListLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        GroupListLayout.setVerticalGroup(
+            GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel110)
+                        .addComponent(jLabel111)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        CardjPannel1.add(GroupList, "CardPri1");
+
         CardPri8.setBackground(new java.awt.Color(255, 255, 255));
         CardPri8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2759,61 +2905,23 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         CardjPannel1.add(CardPri10, "CardPri4");
 
-        CardPri7.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel103.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel103.setText("Client Dashboard->");
-
-        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
-        jLabel110.setText("jLabel18");
-        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel110MouseClicked(evt);
-            }
-        });
-
-        jLabel111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
-        jLabel111.setText("jLabel29");
-        jLabel111.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel111MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout CardPri7Layout = new javax.swing.GroupLayout(CardPri7);
-        CardPri7.setLayout(CardPri7Layout);
-        CardPri7Layout.setHorizontalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
-                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-        );
-        CardPri7Layout.setVerticalGroup(
-            CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardPri7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CardPri7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel110)
-                        .addComponent(jLabel111)))
-                .addContainerGap(548, Short.MAX_VALUE))
-        );
-
-        CardjPannel1.add(CardPri7, "CardPri1");
-
         getContentPane().add(CardjPannel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void onLoad(Users aduser){
-        userName.setText(aduser.getNickname());
+    public Users getClient() {
+        return client;
+    }
+
+    public void setClient(Users client) {
+        this.client = client;
+        onLoad();
+    }
+    
+    private void onLoad(){
+        userName.setText(getClient().getNickname());
+        user = new ChatClient(getClient().getId(),getClient().getUsername(),getClient().getNickname(),getClient().getEmail());
     }
 
     private void menuReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportActionPerformed
@@ -2821,7 +2929,262 @@ public class ClientDashboard extends javax.swing.JFrame {
       //  adminR.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuReportActionPerformed
+    int y1 = 13;
 
+    public void load_client_groups() {
+
+        DBManager dbManager = new DBManager();
+        List chats = dbManager.getChats();
+
+        client_chat_groups_panel.removeAll();
+
+        for (Iterator iterator = chats.iterator(); iterator.hasNext();) {
+            Groups next = (Groups) iterator.next();
+
+            JPanel client_grp_panel = new javax.swing.JPanel();
+            client_grp_panel.setBackground(new java.awt.Color(39, 51, 67));
+            client_grp_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            client_grp_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            client_grp_panel.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    enterToChat(next.getId());
+
+                }
+            });
+
+            boolean is_sub = false;
+//            try {
+//                is_sub = chat.is_subscribed(me.getId());
+//                System.out.println(is_sub);
+//            } catch (RemoteException ex) {
+//                System.out.println(ex);
+//            }
+
+            JLabel subscribe = new javax.swing.JLabel();
+
+            if (is_sub) {
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/unsubscribe.png"))); // NOI18N
+            } else {
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/subscribe.png"))); // NOI18N
+            }
+
+            if (next.getStatus() == 1) {
+                subscribe.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e) {
+                        subscribe_action(next.getId(), subscribe);
+
+                    }
+                });
+
+            } else {
+                subscribe.setEnabled(false);
+                subscribe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            }
+
+            JLabel grp_dec = new javax.swing.JLabel();
+            grp_dec.setForeground(new java.awt.Color(255, 255, 255));
+            grp_dec.setText(next.getDescription());
+
+            JLabel statuts_txt = new javax.swing.JLabel();
+            statuts_txt.setBackground(new java.awt.Color(28, 36, 47));
+            statuts_txt.setForeground(new java.awt.Color(255, 255, 255));
+
+            JLabel statuts_icon = new javax.swing.JLabel();
+
+            if (next.getStatus() == 1) {
+                statuts_txt.setText("online");
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/online.png")));
+            } else {
+                statuts_txt.setText("offline");
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/offline.png")));
+            }
+
+            JLabel grp_name = new javax.swing.JLabel();
+            grp_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+            grp_name.setForeground(new java.awt.Color(255, 255, 255));
+            grp_name.setText(next.getName());
+
+            client_grp_panel.add(subscribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 42, 99, 35));
+            client_grp_panel.add(grp_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 42, 160, 35));
+            client_grp_panel.add(statuts_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 13, 51, -1));
+            client_grp_panel.add(statuts_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 13, 18, 16));
+            client_grp_panel.add(grp_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
+            client_chat_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 299, 96));
+
+            y1 += 110;
+
+        }
+
+    }
+    
+     
+    public void enterToChat(int groupId) {
+        try {
+            if (chat.is_subscribed(user.getId())) {
+               // chat_body_default();
+                EGroupId = groupId;
+                retrivemsg.start();
+            }
+
+        } catch (RemoteException ex) {
+            System.out.println("Exeption occur "+ex.getMessage());
+        }
+    }
+    
+        Thread retrivemsg = new Thread() {
+        public void run() {
+
+            int preiv = 0;
+
+            while (true) {
+                try {
+
+                    Message newmsg = chat.broadcast();
+                    if (newmsg != null) {
+                        if (preiv != newmsg.getMsgid()) {
+                            //System.out.println(nmsg.getDate_time() + "\t" + nmsg.getName() + " : " + nmsg.getMessage() + "\n");
+
+                            System.out.println(newmsg.getMsgid() + "-" + user.getId());
+                            if (newmsg.getUserid() == user.getId()) {
+                                send_msg_handler(newmsg);
+                            } else {
+                                recive_msg_handler(newmsg);
+                            }
+
+                            preiv = newmsg.getMsgid();
+                        }
+                    }
+
+//                    if(newmsg!=preiv){
+//                        System.out.println(chat.broadcast().getMessage());
+//                        preiv = newmsg;
+//                    }
+                    Thread.sleep(100);
+                } catch (RemoteException | NullPointerException ex) {
+                    System.out.println(ex);
+                } catch (InterruptedException ex) {
+
+                }
+            }
+
+        }
+    };
+        int y2 = 210;
+
+    public void recive_msg_handler(Message msg) {
+
+        chat_background.repaint();
+        chat_background.revalidate();
+
+        JLabel msg_content = new javax.swing.JLabel();
+        msg_content.setForeground(new java.awt.Color(255, 255, 255));
+        msg_content.setText("<html>" + msg.getMessage() + "</html>");
+
+        JLabel msg_time = new javax.swing.JLabel();
+        msg_time.setForeground(new java.awt.Color(255, 255, 255));
+        msg_time.setText(msg.getDate_time());
+
+        JLabel msg_name = new javax.swing.JLabel();
+        msg_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        msg_name.setForeground(new java.awt.Color(255, 255, 255));
+        msg_name.setText(msg.getName());
+
+        JLabel msg_dp = new javax.swing.JLabel();
+        msg_dp.setBackground(new java.awt.Color(28, 36, 47));
+
+        List data = DBManager.getDBM().get_avatart(msg.getUserid());
+        Iterator i = data.iterator();
+        if (i.hasNext()) {
+            User user = (User) i.next();
+            ImageIcon iconresized = new ImageIcon(toImageIcon(user.getAvatar()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
+            msg_dp.setIcon(iconresized);
+        }
+
+        JPanel msg_layer = new javax.swing.JPanel();
+
+        msg_layer.setBackground(
+                new java.awt.Color(54, 63, 77));
+        msg_layer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        msg_layer.setLayout(
+                new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        msg_layer.add(msg_content,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 260, 40));
+        msg_layer.add(msg_time,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 210, -1));
+        msg_layer.add(msg_name,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 210, -1));
+        msg_layer.add(msg_dp,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 15, 35, 35));
+
+//        chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, 110));
+        chat_background.add(msg_layer,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y2, 280, 110));
+
+        chat_background.repaint();
+        chat_background.revalidate();
+
+        JScrollBar sb = msgScrollPane.getVerticalScrollBar();
+        sb.setValue(sb.getMaximum());
+
+        y2 += 120;
+
+    }
+        
+        public void send_msg_handler(Message msg) {
+
+        chat_background.repaint();
+        chat_background.revalidate();
+
+        JLabel msg_content = new javax.swing.JLabel();
+        msg_content.setForeground(new java.awt.Color(255, 255, 255));
+        msg_content.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        msg_content.setText("<html>" + msg.getMessage() + "</html>");
+
+        JLabel msg_time = new javax.swing.JLabel();
+        msg_time.setForeground(new java.awt.Color(255, 255, 255));
+        msg_time.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        msg_time.setText(msg.getDate_time());
+
+        JLabel msg_name = new javax.swing.JLabel();
+        msg_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        msg_name.setForeground(new java.awt.Color(255, 255, 255));
+        msg_name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        msg_name.setText(msg.getName());
+
+        JLabel msg_dp = new javax.swing.JLabel();
+        msg_dp.setBackground(new java.awt.Color(54, 63, 77));
+
+        List data = DBManager.getDBM().get_avatart(msg.getUserid());
+        Iterator i = data.iterator();
+        if (i.hasNext()) {
+            User user = (User) i.next();
+            ImageIcon iconresized = new ImageIcon(toImageIcon(user.getAvatar()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
+            msg_dp.setIcon(iconresized);
+        }
+
+        JPanel msg_layer = new javax.swing.JPanel();
+        msg_layer.setBackground(new java.awt.Color(42, 50, 61));
+        msg_layer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        msg_layer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        msg_layer.add(msg_content, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 260, 40));
+        msg_layer.add(msg_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 210, -1));
+        msg_layer.add(msg_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, -1));
+        msg_layer.add(msg_dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 35, 35));
+
+        //chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, 110));
+        chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y2, 280, 110));
+
+        JScrollBar sb = msgScrollPane.getVerticalScrollBar();
+        sb.setValue(sb.getMaximum());
+
+        chat_background.repaint();
+        chat_background.revalidate();
+
+        y2 += 120;
+    }
     private void menuuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuuserActionPerformed
 
     }//GEN-LAST:event_menuuserActionPerformed
@@ -3607,6 +3970,20 @@ public class ClientDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadd2ActionPerformed
 
+    private void msg_typerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_msg_typerKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.sender();
+        }
+    }//GEN-LAST:event_msg_typerKeyPressed
+
+    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_send_btnMouseClicked
+        this.sender();
+    }//GEN-LAST:event_send_btnMouseClicked
+
+    private void send_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_send_btnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_send_btnMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -3660,7 +4037,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel CardPri4;
     private javax.swing.JPanel CardPri5;
     private javax.swing.JPanel CardPri6;
-    private javax.swing.JPanel CardPri7;
     private javax.swing.JPanel CardPri8;
     private javax.swing.JPanel CardPri9;
     private javax.swing.JPanel CardjPannel;
@@ -3669,6 +4045,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle Csearch5;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
+    private javax.swing.JPanel GroupList;
     private javax.swing.JPanel Invoice;
     private rojeru_san.complementos.RSTableMetro InvoiceTable;
     private javax.swing.JTextField MaintanceID;
@@ -3721,6 +4098,11 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField cartxt;
     private javax.swing.JButton cdelete;
     private javax.swing.JButton cdelete1;
+    private javax.swing.JPanel chat_background;
+    private javax.swing.JPanel chat_body_panel;
+    private javax.swing.JScrollPane chat_list_scrollPane;
+    private javax.swing.JLabel chatlist_title2;
+    private javax.swing.JPanel client_chat_groups_panel;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
     private javax.swing.JButton csearch;
@@ -3757,6 +4139,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
@@ -3898,6 +4281,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -3944,11 +4328,14 @@ public class ClientDashboard extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle menuuser1;
     private javax.swing.JTextField midtxt;
     private javax.swing.JTextField midtxt1;
+    private javax.swing.JScrollPane msgScrollPane;
+    private javax.swing.JTextField msg_typer;
     private javax.swing.JTextField partstxt;
     private javax.swing.JTextField partstxt1;
     private javax.swing.JTextField reasontxt;
     private javax.swing.JTextField reasontxt1;
     private javax.swing.JTextField sdatetxt;
+    private javax.swing.JLabel send_btn;
     private javax.swing.JLabel stCount;
     private javax.swing.JComboBox statustxt;
     private javax.swing.JButton timesub;

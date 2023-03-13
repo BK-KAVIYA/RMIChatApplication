@@ -3652,13 +3652,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             dbManager.putOffline(chatId);
             ImageIcon icon = new ImageIcon(absolutespath + "\\src\\PHOTOS\\start.png");
             Action.setIcon(icon);
-            server.stopServer();
+           // server.stopServer();
         } else if (dbManager.putOnline(chatId)) {
             ImageIcon icon = new ImageIcon(absolutespath + "\\src\\PHOTOS\\stop.png");
             Action.setIcon(icon);
-
             //start server and nofify  the observers
-            
             server.startServer(chatId);
 
         }
