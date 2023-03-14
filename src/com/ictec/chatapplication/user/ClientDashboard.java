@@ -12,6 +12,7 @@ import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.service.Chat;
+import com.icttec.chatapplication.service.ChatService;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -3012,7 +3013,7 @@ public class ClientDashboard extends javax.swing.JFrame {
             Groups next = (Groups) iterator.next();
 
             JPanel client_grp_panel = new javax.swing.JPanel();
-            client_grp_panel.setBackground(new java.awt.Color(39, 51, 67));
+            client_grp_panel.setBackground(new java.awt.Color(39, 51, 167));
             client_grp_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             client_grp_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -3092,7 +3093,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         try {
             File btn_icon = new File("");
             String abspath = btn_icon.getAbsolutePath();
-
+            chat=new ChatService(grp_id);
             if (chat.is_subscribed(user.getId())) {
                 chat.unsubscribre(grp_id, user);
                 ImageIcon icon = new ImageIcon(abspath + "\\PHOTOS\\subscribe.png");
@@ -3108,8 +3109,9 @@ public class ClientDashboard extends javax.swing.JFrame {
         }
     } 
     public void enterToChat(int groupId) {
-
+       
        try {
+           chat=new ChatService(groupId);
             if (chat.is_subscribed(user.getId())) {
                 chatDefault();
                 EGroupId = groupId;
@@ -3122,6 +3124,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     }
     
      public void chatDefault() {
+         System.out.println("calling");
         chat_list_panel.setVisible(false);
         chat_body_panel.setVisible(true);
     }

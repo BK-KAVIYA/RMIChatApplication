@@ -10,6 +10,7 @@ public class ChatClient implements Serializable {
     private String nickname;
     private String email;
     //ImageIcon avatar;
+    private static final long serialVersionUID = 6529685098267757690L;
 
     public ChatClient(int id, String username, String nickname, String email) {
         this.id = id;
@@ -25,6 +26,10 @@ public class ChatClient implements Serializable {
 //        this.nickname = nickname;
 //        this.email = email;
 //    }
+
+    public ChatClient() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
     public int getId() {

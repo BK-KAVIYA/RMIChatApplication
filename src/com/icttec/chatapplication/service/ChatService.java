@@ -17,7 +17,9 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 
     Message newmsg = null;
     int group_id;
-    ArrayList<ChatClient> subs = new ArrayList<ChatClient>();
+    ArrayList<ChatClient> subs;
+    //= new ArrayList<ChatClient>();
+    //ChatClient chatClient = new //ChatClient();
 
     public ChatService(int group_id) throws RemoteException {
         super();
@@ -65,23 +67,24 @@ public class ChatService extends UnicastRemoteObject implements Chat {
             subs = (ArrayList<ChatClient>) inobj.readObject();
             
         } catch ( IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
 
     }
 
     @Override
     public boolean is_subscribed(int client_id) {
-       // retrive_subs();
+       retrive_subs();
+        System.out.println("calling");
         boolean subscribed=false;
-//        for (ChatClient next : subs) {
-//            if (next.getId()==client_id) {
-//                subscribed=true;
-//                break;
-//            }
-//        }
+        for (ChatClient next : subs) {
+            if (next.getId()==client_id) {
+                subscribed=true;
+                break;
+            }
+        }
         return subscribed;
     }
 

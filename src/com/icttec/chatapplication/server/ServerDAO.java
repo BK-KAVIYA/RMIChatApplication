@@ -5,6 +5,8 @@
  */
 package com.icttec.chatapplication.server;
 
+import com.icttec.chatapplication.service.Chat;
+
 /**
  *
  * @author KA VI YA

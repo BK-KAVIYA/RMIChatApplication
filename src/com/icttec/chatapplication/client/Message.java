@@ -11,7 +11,7 @@ public class Message implements Serializable {
     private String message;
     private String date_time;
 
-    
+    private static final long serialVersionUID = 6529685098267757690L;
     public int getGroup_id() {
         return group_id;
     }
