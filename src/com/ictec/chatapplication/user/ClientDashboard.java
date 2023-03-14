@@ -5,7 +5,6 @@
  */
 package com.ictec.chatapplication.user;
 
-import com.icttec.chataplication.admin.*;
 import com.icttec.chataplication.main.ChatLogin;
 import com.icttec.chatapplication.client.ChatClient;
 import com.icttec.chatapplication.client.Message;
@@ -13,12 +12,16 @@ import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.service.Chat;
+import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.rmi.RemoteException;
-import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -38,6 +41,7 @@ public class ClientDashboard extends javax.swing.JFrame {
 
     ChatClient user;
     Chat chat;
+    DBManager dBManager;
     CardLayout cardLayout1;
     static int EGroupId;
     Users client;
@@ -287,15 +291,21 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        chat_list_panel = new javax.swing.JPanel();
+        chatlist_title = new javax.swing.JLabel();
+        chatlist_setting = new javax.swing.JLabel();
+        client_logout1 = new javax.swing.JLabel();
+        chat_list_scrollPane1 = new javax.swing.JScrollPane();
+        client_groups_panel = new javax.swing.JPanel();
         chat_body_panel = new javax.swing.JPanel();
         chatlist_title2 = new javax.swing.JLabel();
+        chatlist_setting2 = new javax.swing.JLabel();
+        client_logout2 = new javax.swing.JLabel();
         msgScrollPane = new javax.swing.JScrollPane();
         chat_background = new javax.swing.JPanel();
-        chat_list_scrollPane = new javax.swing.JScrollPane();
-        client_chat_groups_panel = new javax.swing.JPanel();
         msg_typer = new javax.swing.JTextField();
         send_btn = new javax.swing.JLabel();
-        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
         CardPri8 = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -2194,6 +2204,39 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
         });
 
+        chat_list_panel.setBackground(new java.awt.Color(28, 36, 47));
+        chat_list_panel.setPreferredSize(new java.awt.Dimension(375, 500));
+        chat_list_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chatlist_title.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        chatlist_title.setForeground(new java.awt.Color(111, 117, 124));
+        chatlist_title.setText("  Chats Groups");
+        chat_list_panel.add(chatlist_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 300, 30));
+
+        chatlist_setting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chatlist_setting.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chatlist_settingMouseClicked(evt);
+            }
+        });
+        chat_list_panel.add(chatlist_setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 30, 30));
+
+        client_logout1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_logout1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_logout1MouseClicked(evt);
+            }
+        });
+        chat_list_panel.add(client_logout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 30, 30));
+
+        chat_list_scrollPane1.setBackground(new java.awt.Color(28, 36, 47));
+
+        client_groups_panel.setBackground(new java.awt.Color(28, 36, 47));
+        client_groups_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        chat_list_scrollPane1.setViewportView(client_groups_panel);
+
+        chat_list_panel.add(chat_list_scrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 390, 410));
+
         chat_body_panel.setBackground(new java.awt.Color(28, 36, 47));
         chat_body_panel.setPreferredSize(new java.awt.Dimension(375, 500));
         chat_body_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2201,22 +2244,29 @@ public class ClientDashboard extends javax.swing.JFrame {
         chatlist_title2.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         chatlist_title2.setForeground(new java.awt.Color(111, 117, 124));
         chatlist_title2.setText("  Chats");
-        chat_body_panel.add(chatlist_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 300, 30));
+        chat_body_panel.add(chatlist_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 30));
+
+        chatlist_setting2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chatlist_setting2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chatlist_setting2MouseClicked(evt);
+            }
+        });
+        chat_body_panel.add(chatlist_setting2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 30, 30));
+
+        client_logout2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_logout2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_logout2MouseClicked(evt);
+            }
+        });
+        chat_body_panel.add(client_logout2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 30, 30));
 
         chat_background.setBackground(new java.awt.Color(28, 36, 47));
         chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        chat_list_scrollPane.setBackground(new java.awt.Color(28, 36, 47));
-
-        client_chat_groups_panel.setBackground(new java.awt.Color(28, 36, 47));
-        client_chat_groups_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        chat_list_scrollPane.setViewportView(client_chat_groups_panel);
-
-        chat_background.add(chat_list_scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, -78, 510, 510));
-
         msgScrollPane.setViewportView(chat_background);
 
-        chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 370, 420));
+        chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 340, 350));
 
         msg_typer.setBackground(new java.awt.Color(28, 36, 47));
         msg_typer.setForeground(new java.awt.Color(255, 255, 255));
@@ -2228,6 +2278,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         });
         chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 30));
 
+        send_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/send.png"))); // NOI18N
         send_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         send_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2238,26 +2289,30 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
         });
         chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 40, 40));
-        chat_body_panel.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, 10));
+        chat_body_panel.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, 10));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(chat_body_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)))
+                .addComponent(chat_list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(chat_body_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 499, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addComponent(chat_body_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGap(2, 2, 2)
+                    .addComponent(chat_list_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGap(2, 2, 2)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(chat_body_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
         );
+        jLayeredPane1.setLayer(chat_list_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(chat_body_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout GroupListLayout = new javax.swing.GroupLayout(GroupList);
@@ -2272,10 +2327,11 @@ public class ClientDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
-            .addGroup(GroupListLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GroupListLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         GroupListLayout.setVerticalGroup(
             GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2286,8 +2342,12 @@ public class ClientDashboard extends javax.swing.JFrame {
                     .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel110)
                         .addComponent(jLabel111)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(548, Short.MAX_VALUE))
+            .addGroup(GroupListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GroupListLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         CardjPannel1.add(GroupList, "CardPri1");
@@ -2910,6 +2970,10 @@ public class ClientDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public DBManager getDBManager(){
+        dBManager=new DBManager();
+        return dBManager;
+    }
     public Users getClient() {
         return client;
     }
@@ -2921,9 +2985,16 @@ public class ClientDashboard extends javax.swing.JFrame {
     
     private void onLoad(){
         userName.setText(getClient().getNickname());
+        load_client_groups();
+        chat_list_default();
         user = new ChatClient(getClient().getId(),getClient().getUsername(),getClient().getNickname(),getClient().getEmail());
+        
     }
 
+     public void chat_list_default(){
+         chat_body_panel.setVisible(false);
+         chat_list_panel.setVisible(true);
+     }
     private void menuReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportActionPerformed
       //  AdminReport adminR = new AdminReport();
       //  adminR.setVisible(true);
@@ -2933,10 +3004,9 @@ public class ClientDashboard extends javax.swing.JFrame {
 
     public void load_client_groups() {
 
-        DBManager dbManager = new DBManager();
-        List chats = dbManager.getChats();
+        List chats = getDBManager().getChats();
 
-        client_chat_groups_panel.removeAll();
+        client_groups_panel.removeAll();
 
         for (Iterator iterator = chats.iterator(); iterator.hasNext();) {
             Groups next = (Groups) iterator.next();
@@ -2964,9 +3034,9 @@ public class ClientDashboard extends javax.swing.JFrame {
             JLabel subscribe = new javax.swing.JLabel();
 
             if (is_sub) {
-                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/unsubscribe.png"))); // NOI18N
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/unsubscribe.png"))); // NOI18N
             } else {
-                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/subscribe.png"))); // NOI18N
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/subscribe.png"))); // NOI18N
             }
 
             if (next.getStatus() == 1) {
@@ -2994,10 +3064,10 @@ public class ClientDashboard extends javax.swing.JFrame {
 
             if (next.getStatus() == 1) {
                 statuts_txt.setText("online");
-                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/online.png")));
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/online.png")));
             } else {
                 statuts_txt.setText("offline");
-                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/images/offline.png")));
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/offline.png")));
             }
 
             JLabel grp_name = new javax.swing.JLabel();
@@ -3010,7 +3080,7 @@ public class ClientDashboard extends javax.swing.JFrame {
             client_grp_panel.add(statuts_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 13, 51, -1));
             client_grp_panel.add(statuts_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 13, 18, 16));
             client_grp_panel.add(grp_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
-            client_chat_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 299, 96));
+            client_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 299, 96));
 
             y1 += 110;
 
@@ -3018,11 +3088,30 @@ public class ClientDashboard extends javax.swing.JFrame {
 
     }
     
-     
-    public void enterToChat(int groupId) {
+        public void subscribe_action(int grp_id, JLabel sub_btn) {
         try {
+            File btn_icon = new File("");
+            String abspath = btn_icon.getAbsolutePath();
+
             if (chat.is_subscribed(user.getId())) {
-               // chat_body_default();
+                chat.unsubscribre(grp_id, user);
+                ImageIcon icon = new ImageIcon(abspath + "\\PHOTOS\\subscribe.png");
+                sub_btn.setIcon(icon);
+            } else {
+                chat.subscribre(grp_id, user);
+                ImageIcon icon = new ImageIcon(abspath + "\\PHOTOS\\unsubscribe.png");
+                sub_btn.setIcon(icon);
+            }
+
+        } catch (RemoteException ex) {
+            System.out.println("Exeption occur "+ex.getMessage());
+        }
+    } 
+    public void enterToChat(int groupId) {
+
+       try {
+            if (chat.is_subscribed(user.getId())) {
+                chatDefault();
                 EGroupId = groupId;
                 retrivemsg.start();
             }
@@ -3030,6 +3119,11 @@ public class ClientDashboard extends javax.swing.JFrame {
         } catch (RemoteException ex) {
             System.out.println("Exeption occur "+ex.getMessage());
         }
+    }
+    
+     public void chatDefault() {
+        chat_list_panel.setVisible(false);
+        chat_body_panel.setVisible(true);
     }
     
         Thread retrivemsg = new Thread() {
@@ -3062,7 +3156,7 @@ public class ClientDashboard extends javax.swing.JFrame {
 //                    }
                     Thread.sleep(100);
                 } catch (RemoteException | NullPointerException ex) {
-                    System.out.println(ex);
+                    System.out.println("test1"+ex);
                 } catch (InterruptedException ex) {
 
                 }
@@ -3093,11 +3187,12 @@ public class ClientDashboard extends javax.swing.JFrame {
         JLabel msg_dp = new javax.swing.JLabel();
         msg_dp.setBackground(new java.awt.Color(28, 36, 47));
 
-        List data = DBManager.getDBM().get_avatart(msg.getUserid());
+        List data = getDBManager().getAvatart(msg.getUserid());
         Iterator i = data.iterator();
         if (i.hasNext()) {
-            User user = (User) i.next();
-            ImageIcon iconresized = new ImageIcon(toImageIcon(user.getAvatar()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
+            Users user = (Users) i.next();
+            Utility utility = new Utility();
+            ImageIcon iconresized = new ImageIcon(utility.toImageIcon(user.getProfileImage()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
             msg_dp.setIcon(iconresized);
         }
 
@@ -3156,11 +3251,13 @@ public class ClientDashboard extends javax.swing.JFrame {
         JLabel msg_dp = new javax.swing.JLabel();
         msg_dp.setBackground(new java.awt.Color(54, 63, 77));
 
-        List data = DBManager.getDBM().get_avatart(msg.getUserid());
+        
+        List data = getDBManager().getAvatart(msg.getUserid());
         Iterator i = data.iterator();
         if (i.hasNext()) {
-            User user = (User) i.next();
-            ImageIcon iconresized = new ImageIcon(toImageIcon(user.getAvatar()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
+            Users user = (Users) i.next();
+            Utility utility = new Utility();
+            ImageIcon iconresized = new ImageIcon(utility.toImageIcon(user.getProfileImage()).getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
             msg_dp.setIcon(iconresized);
         }
 
@@ -3969,6 +4066,48 @@ public class ClientDashboard extends javax.swing.JFrame {
     private void cadd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadd2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cadd2ActionPerformed
+    public void sender() {
+        String m = msg_typer.getText();
+        if (m.equalsIgnoreCase("bye")) {
+            System.out.println("Close ok");
+        } else {
+
+            LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String time_now = myDateObj.format(myFormatObj);
+
+            Message msg = new Message();
+            msg.setGroup_id(EGroupId);
+            msg.setMsgid(msg.hashCode());
+            msg.setUserid(user.getId());
+            msg.setName(user.getUsername());
+            msg.setMessage(m);
+            msg.setDate_time(time_now);
+
+            try {
+                chat.send_message(msg);
+                msg_typer.setText("");
+            } catch (RemoteException ex) {
+                System.out.println(ex);
+            }
+        }
+        
+    }
+    private void chatlist_settingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatlist_settingMouseClicked
+        //update_default();
+    }//GEN-LAST:event_chatlist_settingMouseClicked
+
+    private void client_logout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_logout1MouseClicked
+       // signin_default();
+    }//GEN-LAST:event_client_logout1MouseClicked
+
+    private void chatlist_setting2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatlist_setting2MouseClicked
+        //signin_default();
+    }//GEN-LAST:event_chatlist_setting2MouseClicked
+
+    private void client_logout2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_logout2MouseClicked
+       // signin_default();
+    }//GEN-LAST:event_client_logout2MouseClicked
 
     private void msg_typerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_msg_typerKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -4100,9 +4239,15 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JButton cdelete1;
     private javax.swing.JPanel chat_background;
     private javax.swing.JPanel chat_body_panel;
-    private javax.swing.JScrollPane chat_list_scrollPane;
+    private javax.swing.JPanel chat_list_panel;
+    private javax.swing.JScrollPane chat_list_scrollPane1;
+    private javax.swing.JLabel chatlist_setting;
+    private javax.swing.JLabel chatlist_setting2;
+    private javax.swing.JLabel chatlist_title;
     private javax.swing.JLabel chatlist_title2;
-    private javax.swing.JPanel client_chat_groups_panel;
+    private javax.swing.JPanel client_groups_panel;
+    private javax.swing.JLabel client_logout1;
+    private javax.swing.JLabel client_logout2;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
     private javax.swing.JButton csearch;
@@ -4139,7 +4284,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;

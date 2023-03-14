@@ -24,5 +24,6 @@ public interface DBManagerInterface {
     public boolean putOnline(int ChatId);
     public boolean isOnline(int chatId);
     public boolean checkAllOffline();
+    public List getAvatart(int UserId);
     
 }

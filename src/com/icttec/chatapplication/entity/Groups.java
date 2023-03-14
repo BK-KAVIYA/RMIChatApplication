@@ -65,6 +65,11 @@ public class Groups  implements java.io.Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public int getStatus() {
+        return status;
+    }
+    
     public Date getCreatedDate() {
         return this.createdDate;
     }
