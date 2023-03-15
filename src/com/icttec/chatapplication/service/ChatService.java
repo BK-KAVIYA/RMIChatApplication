@@ -17,7 +17,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 
     Message newmsg = null;
     int group_id;
-    ArrayList<ChatClient> subs;
+    ArrayList<ChatClient> subs = new ArrayList<ChatClient>();
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
 
@@ -76,21 +76,25 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 
     @Override
     public boolean is_subscribed(int client_id) {
-       retrive_subs();
-        System.out.println("calling");
+        //retrive_subs();
+        
         boolean subscribed=false;
+        
         for (ChatClient next : subs) {
+            System.out.println("Inside the for");
+            //ChatClient next = iterator.next();
             if (next.getId()==client_id) {
                 subscribed=true;
                 break;
             }
         }
+        System.out.println("out the for");
         return subscribed;
     }
 
     @Override
     public void subscribre(int group_id, ChatClient c) throws RemoteException {
-
+        System.out.println("inside the subcribe");
         subs.add(c);
         try {
             FileOutputStream fileOut = new FileOutputStream("subscribers_log/"+group_id + "_subscribers.ser", true);

@@ -2989,6 +2989,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         load_client_groups();
         chat_list_default();
         user = new ChatClient(getClient().getId(),getClient().getUsername(),getClient().getNickname(),getClient().getEmail());
+        user.startClient();
         
     }
 
@@ -3096,11 +3097,12 @@ public class ClientDashboard extends javax.swing.JFrame {
             chat=new ChatService(grp_id);
             if (chat.is_subscribed(user.getId())) {
                 chat.unsubscribre(grp_id, user);
-                ImageIcon icon = new ImageIcon(abspath + "\\PHOTOS\\subscribe.png");
+                System.out.println("inside the subcribe action true");
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\PHOTOS\\subscribe.png");
                 sub_btn.setIcon(icon);
             } else {
-                chat.subscribre(grp_id, user);
-                ImageIcon icon = new ImageIcon(abspath + "\\PHOTOS\\unsubscribe.png");
+                chat.subscribre(grp_id, user);                
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\PHOTOS\\unsubscribe.png");
                 sub_btn.setIcon(icon);
             }
 
@@ -3111,13 +3113,14 @@ public class ClientDashboard extends javax.swing.JFrame {
     public void enterToChat(int groupId) {
        
        try {
-           chat=new ChatService(groupId);
+           //chat=new ChatService(groupId);
             if (chat.is_subscribed(user.getId())) {
+                System.out.println("chat is subcribe");
                 chatDefault();
                 EGroupId = groupId;
                 retrivemsg.start();
             }
-
+        System.out.println("chat is not subcribe");
         } catch (RemoteException ex) {
             System.out.println("Exeption occur "+ex.getMessage());
         }
@@ -3135,6 +3138,7 @@ public class ClientDashboard extends javax.swing.JFrame {
             int preiv = 0;
 
             while (true) {
+                System.out.println("Thread invoke");
                 try {
 
                     Message newmsg = chat.broadcast();
@@ -3170,7 +3174,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         int y2 = 210;
 
     public void recive_msg_handler(Message msg) {
-
+        System.out.println("recive msg function invoke");
         chat_background.repaint();
         chat_background.revalidate();
 
@@ -3231,7 +3235,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     }
         
         public void send_msg_handler(Message msg) {
-
+          System.out.println("recive msg function invoke");   
         chat_background.repaint();
         chat_background.revalidate();
 

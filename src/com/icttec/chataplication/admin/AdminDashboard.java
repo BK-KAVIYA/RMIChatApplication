@@ -3661,6 +3661,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         }
     }
+    
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
 
         JFileChooser chooser = new JFileChooser(); //open image file file

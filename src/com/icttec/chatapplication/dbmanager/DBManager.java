@@ -221,7 +221,7 @@ public class DBManager implements DBManagerInterface{
     @Override
     public List getAvatart(int UserId) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
-        String sql = "FROM User WHERE id='" + UserId + "' AND is_deleted=0";
+        String sql = "FROM Users WHERE id='" + UserId + "' AND is_deleted=0";
         Query qu = sess.createQuery(sql);
         List User = qu.list();
         return User;
