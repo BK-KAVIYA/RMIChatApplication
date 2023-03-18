@@ -11,8 +11,6 @@ import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 public class ChatService extends UnicastRemoteObject implements Chat {
 
     Message newmsg = null;
@@ -21,6 +19,10 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
 
+    public ChatService() throws RemoteException{
+    }
+
+    
     public ChatService(int group_id) throws RemoteException {
         super();
         this.group_id = group_id;
@@ -36,6 +38,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     @Override
     public Message broadcast() {
         return this.newmsg;
+       
     }
 
     public void save_msg() {

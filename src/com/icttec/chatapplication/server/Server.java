@@ -28,6 +28,7 @@ public class Server implements ServerDAO{
     
     @Override
     public void startServer(int groupID) {
+        System.out.println("group id"+groupID);
         try {
             chat = new ChatService(groupID);
             registry = LocateRegistry.createRegistry(2123);
@@ -42,6 +43,9 @@ public class Server implements ServerDAO{
         }
     }
 
+    public Chat getChatService(){
+        return chat;
+    }
     @Override
     public void stopServer() {
         try {

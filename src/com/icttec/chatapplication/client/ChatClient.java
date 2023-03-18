@@ -44,6 +44,7 @@ public class ChatClient implements Serializable {
         try {
             reg = LocateRegistry.getRegistry("localhost", 2123);
             chat = (Chat) reg.lookup("ChatAdmin");
+            System.out.println("Client start..");
 
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex);

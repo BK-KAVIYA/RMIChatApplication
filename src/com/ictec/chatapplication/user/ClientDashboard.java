@@ -16,11 +16,15 @@ import com.icttec.chatapplication.service.ChatService;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.event.AdjustmentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
@@ -2989,10 +2993,22 @@ public class ClientDashboard extends javax.swing.JFrame {
         load_client_groups();
         chat_list_default();
         user = new ChatClient(getClient().getId(),getClient().getUsername(),getClient().getNickname(),getClient().getEmail());
-        user.startClient();
+        //user.startClient();
+        start_client();
         
     }
 
+    public void start_client() {
+
+        try {
+           Registry reg = LocateRegistry.getRegistry("localhost", 2123);
+            chat = (Chat) reg.lookup("ChatAdmin");
+
+        } catch (RemoteException | NotBoundException ex) {
+            System.out.println(ex);
+        }
+
+    }
      public void chat_list_default(){
          chat_body_panel.setVisible(false);
          chat_list_panel.setVisible(true);
@@ -3045,6 +3061,24 @@ public class ClientDashboard extends javax.swing.JFrame {
                 subscribe.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
+                        
+                        String m = msg_typer.getText();
+  
+                        LocalDateTime myDateObj = LocalDateTime.now();
+                        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        String time_now = myDateObj.format(myFormatObj);
+                        Message msg = new Message();
+                        msg.setDate_time(time_now);
+                        String user = client.getUsername();
+                        m = "****** " + user  + " has join the chat " + " ******";
+                        msg.setMessage(m);
+                        try {
+                            
+                            chat.send_message(msg);
+                            System.out.println(msg);
+                        } catch (RemoteException ex) {
+                            System.out.println("Exection occur "+ex.getMessage());
+                        }
 
                     }
                 });
@@ -3094,7 +3128,8 @@ public class ClientDashboard extends javax.swing.JFrame {
         try {
             File btn_icon = new File("");
             String abspath = btn_icon.getAbsolutePath();
-            chat=new ChatService(grp_id);
+            //chat=new ChatService();
+          
             if (chat.is_subscribed(user.getId())) {
                 chat.unsubscribre(grp_id, user);
                 System.out.println("inside the subcribe action true");
@@ -3127,29 +3162,31 @@ public class ClientDashboard extends javax.swing.JFrame {
     }
     
      public void chatDefault() {
-         System.out.println("calling");
         chat_list_panel.setVisible(false);
         chat_body_panel.setVisible(true);
     }
     
         Thread retrivemsg = new Thread() {
         public void run() {
-
             int preiv = 0;
 
             while (true) {
-                System.out.println("Thread invoke");
+                
                 try {
 
                     Message newmsg = chat.broadcast();
                     if (newmsg != null) {
+                        
                         if (preiv != newmsg.getMsgid()) {
+                           
                             //System.out.println(nmsg.getDate_time() + "\t" + nmsg.getName() + " : " + nmsg.getMessage() + "\n");
 
-                            System.out.println(newmsg.getMsgid() + "-" + user.getId());
+                            System.out.println(newmsg.getMsgid() + "-" + user.getId()+"-"+newmsg.getUserid());
                             if (newmsg.getUserid() == user.getId()) {
+                                System.out.println("Thread invoke true");
                                 send_msg_handler(newmsg);
                             } else {
+                                 System.out.println("Thread invoke else");
                                 recive_msg_handler(newmsg);
                             }
 
@@ -3235,7 +3272,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     }
         
         public void send_msg_handler(Message msg) {
-          System.out.println("recive msg function invoke");   
+          System.out.println("send msg function invoke");   
         chat_background.repaint();
         chat_background.revalidate();
 
@@ -4076,7 +4113,49 @@ public class ClientDashboard extends javax.swing.JFrame {
     public void sender() {
         String m = msg_typer.getText();
         if (m.equalsIgnoreCase("bye")) {
-            System.out.println("Close ok");
+            
+           LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String time_now = myDateObj.format(myFormatObj);
+
+            
+            Message msg = new Message();
+            msg.setDate_time(time_now);
+            String userName = client.getUsername();
+            m = "****** " + userName  + " has left the chat " + " ******";
+
+       
+            try {
+                chat.unsubscribre(EGroupId, user);
+            } catch (RemoteException ex) {
+                System.out.println("Error Occour in Unscribe "+ex.getMessage());
+            }
+
+            this.hide();
+            ChatLogin chatLogin = new ChatLogin();
+            chatLogin.setVisible(true);
+
+
+            System.out.println(m);
+            msg.setMessage(m);
+            
+  
+            
+            JScrollBar vertical = msgScrollPane.getVerticalScrollBar();
+            msgScrollPane.setMaximumSize(vertical.getMaximumSize());
+        
+
+            try {
+                chat.send_message(msg);
+                
+                msg_typer.setText("");
+            } catch (RemoteException ex) {
+                System.out.println("Error : "+ex.getMessage());
+            }
+            
+            msgScrollPane.getVerticalScrollBar().addAdjustmentListener((AdjustmentEvent e) -> {
+            e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+        });
         } else {
 
             LocalDateTime myDateObj = LocalDateTime.now();

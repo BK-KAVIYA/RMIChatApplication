@@ -17,9 +17,9 @@ public class LoginImp implements LoginDAO{
 
    
     @Override
-    public void userLogin(Login logins) {
+    public void userLogin(ChatLogin chatLogin,Login logins) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
-        ChatLogin loginPage = new ChatLogin();
+        //ChatLogin loginPage = new ChatLogin();
         String sql="FROM Users WHERE username='" + logins.getID() + "' AND password='" + logins.getPassword() + "'";
 
             Query qu = sess.createQuery(sql);
@@ -60,7 +60,7 @@ public class LoginImp implements LoginDAO{
 //                          adUsers.setNickname(nickname);
                             admindashboard.setAdmin(user);
                             
-                            loginPage.hide();
+                            chatLogin.dispose(); //close the loging page
                             admindashboard.show();
                             
                             break;
@@ -72,18 +72,18 @@ public class LoginImp implements LoginDAO{
                             //clUsers.setNickname(nickname);
                            // clientDashboard.onLoad(clUsers);
                             
-                            loginPage.hide();
+                            chatLogin.dispose();
                             clientDashboard.show();
                             
                             break;
                         default :
-                            JOptionPane.showMessageDialog(loginPage,"user cann't Identified!!");
+                            JOptionPane.showMessageDialog(chatLogin,"user cann't Identified!!");
                     
                     }
                 }
                 }else{
 
-                     JOptionPane.showMessageDialog(loginPage,"Please Enter the correct username and password!!");
+                     JOptionPane.showMessageDialog(chatLogin,"Please Enter the correct username and password!!");
             }
 
     }}

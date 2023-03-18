@@ -208,7 +208,7 @@ public class ChatLogin extends javax.swing.JFrame {
         login.setPassword(password);
         
         LoginImp lgImp = new LoginImp();
-        lgImp.userLogin(login);
+        lgImp.userLogin(this,login);
         
     }//GEN-LAST:event_btnlog1ActionPerformed
 
