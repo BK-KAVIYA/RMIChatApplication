@@ -82,6 +82,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         stCount = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         DriCount = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -539,6 +540,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 0, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/driver.png"))); // NOI18N
+
         jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DRIVERS");
@@ -553,6 +556,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -567,6 +571,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(DriCount, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 102));
@@ -2032,6 +2037,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jFrame1.getContentPane().add(CardjPannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel15.setBackground(new java.awt.Color(0, 0, 102));
@@ -2740,6 +2746,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         getContentPane().add(CardAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void setAdmin(Users adminUser){
@@ -3939,6 +3946,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;

@@ -7,6 +7,7 @@ package com.icttec.chataplication.main;
 
 import com.icttec.chatapplication.login.Login;
 import com.icttec.chatapplication.login.LoginImp;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,7 @@ public class ChatLogin extends javax.swing.JFrame {
         pwd1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,9 +82,6 @@ public class ChatLogin extends javax.swing.JFrame {
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel17MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel17MouseEntered(evt);
             }
         });
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
@@ -185,15 +184,16 @@ public class ChatLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel17MouseClicked
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
 
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel17MouseEntered
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     private void btnsing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsing1ActionPerformed
         // TODO add your handling code here:

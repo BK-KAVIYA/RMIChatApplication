@@ -29,6 +29,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -611,7 +613,7 @@ public class ClientDashboard extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(DriCount, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 102));
@@ -2209,12 +2211,12 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
         });
 
-        chat_list_panel.setBackground(new java.awt.Color(28, 36, 47));
+        chat_list_panel.setBackground(new java.awt.Color(0, 0, 102));
         chat_list_panel.setPreferredSize(new java.awt.Dimension(375, 500));
         chat_list_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         chatlist_title.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        chatlist_title.setForeground(new java.awt.Color(111, 117, 124));
+        chatlist_title.setForeground(new java.awt.Color(255, 255, 255));
         chatlist_title.setText("  Chats Groups");
         chat_list_panel.add(chatlist_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 300, 30));
 
@@ -2236,18 +2238,18 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         chat_list_scrollPane1.setBackground(new java.awt.Color(28, 36, 47));
 
-        client_groups_panel.setBackground(new java.awt.Color(28, 36, 47));
+        client_groups_panel.setBackground(new java.awt.Color(51, 153, 255));
         client_groups_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         chat_list_scrollPane1.setViewportView(client_groups_panel);
 
         chat_list_panel.add(chat_list_scrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 390, 410));
 
-        chat_body_panel.setBackground(new java.awt.Color(28, 36, 47));
+        chat_body_panel.setBackground(new java.awt.Color(0, 0, 102));
         chat_body_panel.setPreferredSize(new java.awt.Dimension(375, 500));
         chat_body_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         chatlist_title2.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        chatlist_title2.setForeground(new java.awt.Color(111, 117, 124));
+        chatlist_title2.setForeground(new java.awt.Color(255, 255, 255));
         chatlist_title2.setText("  Chats");
         chat_body_panel.add(chatlist_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 30));
 
@@ -2267,21 +2269,20 @@ public class ClientDashboard extends javax.swing.JFrame {
         });
         chat_body_panel.add(client_logout2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 30, 30));
 
-        chat_background.setBackground(new java.awt.Color(28, 36, 47));
+        chat_background.setBackground(new java.awt.Color(51, 153, 255));
         chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         msgScrollPane.setViewportView(chat_background);
 
-        chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 340, 350));
+        chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 370, 360));
 
-        msg_typer.setBackground(new java.awt.Color(28, 36, 47));
-        msg_typer.setForeground(new java.awt.Color(255, 255, 255));
+        msg_typer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         msg_typer.setBorder(null);
         msg_typer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 msg_typerKeyPressed(evt);
             }
         });
-        chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 30));
+        chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, 30));
 
         send_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/send.png"))); // NOI18N
         send_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2293,7 +2294,7 @@ public class ClientDashboard extends javax.swing.JFrame {
                 send_btnMouseEntered(evt);
             }
         });
-        chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 40, 40));
+        chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 40, 40));
         chat_body_panel.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, 10));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -2973,6 +2974,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         getContentPane().add(CardjPannel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public DBManager getDBManager(){
@@ -3058,10 +3060,9 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
 
             if (next.getStatus() == 1) {
-                subscribe.addMouseListener(new MouseAdapter() {
+                    subscribe.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
-                        
                         String m = msg_typer.getText();
   
                         LocalDateTime myDateObj = LocalDateTime.now();
@@ -3071,16 +3072,18 @@ public class ClientDashboard extends javax.swing.JFrame {
                         msg.setDate_time(time_now);
                         String user = client.getUsername();
                         m = "****** " + user  + " has join the chat " + " ******";
+                        //System.out.println("Calling "+m);
                         msg.setMessage(m);
                         try {
                             
                             chat.send_message(msg);
-                            System.out.println(msg);
+                            System.out.println(msg.getMessage());
                         } catch (RemoteException ex) {
-                            System.out.println("Exection occur "+ex.getMessage());
+                            Logger.getLogger(ClientDashboard.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                    }
+
+                    }   
                 });
 
             } else {
@@ -3111,12 +3114,12 @@ public class ClientDashboard extends javax.swing.JFrame {
             grp_name.setForeground(new java.awt.Color(255, 255, 255));
             grp_name.setText(next.getName());
 
-            client_grp_panel.add(subscribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 42, 99, 35));
+            client_grp_panel.add(subscribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 42, 99, 35));
             client_grp_panel.add(grp_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 42, 160, 35));
-            client_grp_panel.add(statuts_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 13, 51, -1));
-            client_grp_panel.add(statuts_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 13, 18, 16));
+            client_grp_panel.add(statuts_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 13, 51, -1));
+            client_grp_panel.add(statuts_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 13, 18, 16));
             client_grp_panel.add(grp_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
-            client_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 299, 96));
+            client_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 350, 96));
 
             y1 += 110;
 
@@ -3136,7 +3139,8 @@ public class ClientDashboard extends javax.swing.JFrame {
                 ImageIcon icon = new ImageIcon(abspath + "\\src\\PHOTOS\\subscribe.png");
                 sub_btn.setIcon(icon);
             } else {
-                chat.subscribre(grp_id, user);                
+                chat.subscribre(grp_id, user); 
+                System.out.println("inside the subcribe action false");
                 ImageIcon icon = new ImageIcon(abspath + "\\src\\PHOTOS\\unsubscribe.png");
                 sub_btn.setIcon(icon);
             }
@@ -3186,7 +3190,7 @@ public class ClientDashboard extends javax.swing.JFrame {
                                 System.out.println("Thread invoke true");
                                 send_msg_handler(newmsg);
                             } else {
-                                 System.out.println("Thread invoke else");
+                                System.out.println("Thread invoke else");
                                 recive_msg_handler(newmsg);
                             }
 
@@ -3200,9 +3204,9 @@ public class ClientDashboard extends javax.swing.JFrame {
 //                    }
                     Thread.sleep(100);
                 } catch (RemoteException | NullPointerException ex) {
-                    System.out.println("test1"+ex);
+                    System.out.println("Error : "+ex.getMessage());
                 } catch (InterruptedException ex) {
-
+                    System.out.println("Error : "+ex.getMessage());
                 }
             }
 
@@ -3211,7 +3215,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         int y2 = 210;
 
     public void recive_msg_handler(Message msg) {
-        System.out.println("recive msg function invoke");
+        
         chat_background.repaint();
         chat_background.revalidate();
 
@@ -3243,7 +3247,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         JPanel msg_layer = new javax.swing.JPanel();
 
         msg_layer.setBackground(
-                new java.awt.Color(54, 63, 77));
+                new java.awt.Color(0,153,153));
         msg_layer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         msg_layer.setLayout(
                 new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -3272,7 +3276,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     }
         
         public void send_msg_handler(Message msg) {
-          System.out.println("send msg function invoke");   
+          
         chat_background.repaint();
         chat_background.revalidate();
 
@@ -3306,7 +3310,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         }
 
         JPanel msg_layer = new javax.swing.JPanel();
-        msg_layer.setBackground(new java.awt.Color(42, 50, 61));
+        msg_layer.setBackground(new java.awt.Color(39, 51, 167));
         msg_layer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         msg_layer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -3316,7 +3320,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         msg_layer.add(msg_dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 35, 35));
 
         //chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, 110));
-        chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y2, 280, 110));
+        chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, y2, 280, 110));
 
         JScrollBar sb = msgScrollPane.getVerticalScrollBar();
         sb.setValue(sb.getMaximum());
