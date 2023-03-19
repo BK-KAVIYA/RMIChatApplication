@@ -20,7 +20,10 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -31,11 +34,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -44,8 +50,6 @@ import javax.swing.JScrollBar;
 public class ClientDashboard extends javax.swing.JFrame {
 
 
-    
-
     ChatClient user;
     Chat chat;
     DBManager dBManager;
@@ -53,8 +57,11 @@ public class ClientDashboard extends javax.swing.JFrame {
     static int EGroupId;
     Users client;
     
+    
     public ClientDashboard() {
+        
         initComponents();
+        cardLayout1 =(CardLayout)(Usercard.getLayout());
         
     }
 
@@ -282,7 +289,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
+        DashPhoto = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         menuuser1 = new rojerusan.RSMaterialButtonRectangle();
         menucourse1 = new rojerusan.RSMaterialButtonRectangle();
@@ -292,7 +299,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         menutimetable2 = new rojerusan.RSMaterialButtonRectangle();
-        CardjPannel1 = new javax.swing.JPanel();
+        Usercard = new javax.swing.JPanel();
         GroupList = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
@@ -313,43 +320,30 @@ public class ClientDashboard extends javax.swing.JFrame {
         msg_typer = new javax.swing.JTextField();
         send_btn = new javax.swing.JLabel();
         jLabel105 = new javax.swing.JLabel();
-        CardPri8 = new javax.swing.JPanel();
+        Setting = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
         jLabel114 = new javax.swing.JLabel();
-        jLabel115 = new javax.swing.JLabel();
-        txtRegNo1 = new javax.swing.JTextField();
-        adGender1 = new javax.swing.JComboBox<String>();
-        jLabel116 = new javax.swing.JLabel();
-        txtEmail1 = new javax.swing.JTextField();
-        jLabel117 = new javax.swing.JLabel();
+        jLabel126 = new javax.swing.JLabel();
+        edite_profie_pic = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        txtid1 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
-        txtFName1 = new javax.swing.JTextField();
-        txtAddress1 = new javax.swing.JTextField();
-        jLabel119 = new javax.swing.JLabel();
-        txtaddress3 = new javax.swing.JTextField();
-        jLabel120 = new javax.swing.JLabel();
-        jLabel121 = new javax.swing.JLabel();
-        jLabel122 = new javax.swing.JLabel();
+        uname = new javax.swing.JTextField();
+        jLabel128 = new javax.swing.JLabel();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        usertype = new javax.swing.JComboBox<String>();
+        email = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jPanel20 = new javax.swing.JPanel();
         jLabel123 = new javax.swing.JLabel();
-        adCPwd1 = new javax.swing.JPasswordField();
-        adPwd1 = new javax.swing.JPasswordField();
+        cpwd = new javax.swing.JPasswordField();
+        pwd = new javax.swing.JPasswordField();
         jLabel124 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
         ShowPassword1 = new javax.swing.JCheckBox();
-        txtPhone1 = new javax.swing.JTextField();
-        txtDOB1 = new javax.swing.JTextField();
         AdUpdate1 = new rojerusan.RSMaterialButtonRectangle();
-        lblimage1 = new javax.swing.JLabel();
-        jLabel126 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        txtid1 = new javax.swing.JLabel();
-        txtCity3 = new javax.swing.JTextField();
-        jLabel127 = new javax.swing.JLabel();
-        txtCity4 = new javax.swing.JTextField();
-        jLabel128 = new javax.swing.JLabel();
-        txtLName2 = new javax.swing.JTextField();
         CardPri9 = new javax.swing.JPanel();
         jLabel129 = new javax.swing.JLabel();
         jLabel143 = new javax.swing.JLabel();
@@ -2094,9 +2088,9 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel63.setText("Chat Application");
         jPanel15.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, 30));
 
-        jLabel64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
-        jLabel64.setText("jLabel6");
-        jPanel15.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 150, 140));
+        DashPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
+        DashPhoto.setText("jLabel6");
+        jPanel15.add(DashPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 150, 140));
 
         userName.setBackground(new java.awt.Color(255, 255, 255));
         userName.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
@@ -2179,16 +2173,16 @@ public class ClientDashboard extends javax.swing.JFrame {
         menutimetable2.setBackground(new java.awt.Color(102, 153, 255));
         menutimetable2.setForeground(new java.awt.Color(0, 0, 102));
         menutimetable2.setText("SETTING");
-        menutimetable2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menutimetable2ActionPerformed(evt);
+        menutimetable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menutimetable2MouseClicked(evt);
             }
         });
         jPanel15.add(menutimetable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 54));
 
         getContentPane().add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 622));
 
-        CardjPannel1.setLayout(new java.awt.CardLayout());
+        Usercard.setLayout(new java.awt.CardLayout());
 
         GroupList.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2356,10 +2350,10 @@ public class ClientDashboard extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        CardjPannel1.add(GroupList, "CardPri1");
+        Usercard.add(GroupList, "CardPri1");
 
-        CardPri8.setBackground(new java.awt.Color(255, 255, 255));
-        CardPri8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Setting.setBackground(new java.awt.Color(255, 255, 255));
+        Setting.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/back_red.png"))); // NOI18N
         jLabel112.setText("jLabel16");
@@ -2368,11 +2362,11 @@ public class ClientDashboard extends javax.swing.JFrame {
                 jLabel112MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 32, -1));
+        Setting.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 32, -1));
 
         jLabel113.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel113.setText("Admin Dashboard >Setting->");
-        CardPri8.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 255, 41));
+        jLabel113.setText("Client Dashboard >Setting->");
+        Setting.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 255, 41));
 
         jLabel114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/close.png"))); // NOI18N
         jLabel114.setText("jLabel17");
@@ -2381,47 +2375,60 @@ public class ClientDashboard extends javax.swing.JFrame {
                 jLabel114MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+        Setting.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
+
+        jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
+        jLabel126.setText("jLabel29");
+        jLabel126.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel126MouseClicked(evt);
+            }
+        });
+        Setting.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+
+        edite_profie_pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
+        edite_profie_pic.setText("jLabel31");
+        Setting.add(edite_profie_pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
+
+        jButton10.setText("add image");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        Setting.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+
+        txtid1.setText("Image name");
+        Setting.add(txtid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
+
+        jLabel118.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel118.setText("User Name");
+        Setting.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 32));
+        Setting.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, 29));
+
+        jLabel128.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel128.setText("Full Name");
+        Setting.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 32));
 
         jLabel115.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel115.setText("Registration Number");
-        CardPri8.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 243, 143, 29));
-        CardPri8.add(txtRegNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 241, 250, 32));
-
-        adGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-        CardPri8.add(adGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 111, 186, 28));
+        jLabel115.setText("Email");
+        Setting.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 90, 29));
 
         jLabel116.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel116.setText("Gender");
-        CardPri8.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, -1, 32));
-        CardPri8.add(txtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 29));
+        Setting.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, 32));
 
-        jLabel117.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel117.setText("Email");
-        CardPri8.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, 32));
+        usertype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "User" }));
+        usertype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usertypeActionPerformed(evt);
+            }
+        });
+        Setting.add(usertype, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
 
-        jLabel118.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel118.setText("First Name");
-        CardPri8.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 70, -1, 32));
-        CardPri8.add(txtFName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 106, 250, 29));
-        CardPri8.add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 323, 398, 32));
-
-        jLabel119.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel119.setText("Adress Line 1");
-        CardPri8.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 284, -1, 32));
-        CardPri8.add(txtaddress3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
-
-        jLabel120.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel120.setText("Adress Line 2");
-        CardPri8.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 361, -1, 32));
-
-        jLabel121.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel121.setText("NIC");
-        CardPri8.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 430, -1, 32));
-
-        jLabel122.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel122.setText("Phone Number");
-        CardPri8.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 430, -1, 32));
+        email.setEditable(false);
+        Setting.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 260, 32));
+        Setting.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 260, 29));
 
         jPanel20.setBackground(new java.awt.Color(0, 0, 102));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2431,11 +2438,11 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel123.setText("Once Set the password Cann't Modifiey");
         jPanel20.add(jLabel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
 
-        adCPwd1.setText("jPassw");
-        jPanel20.add(adCPwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 181, 30));
+        cpwd.setText("jPassw");
+        jPanel20.add(cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 181, 30));
 
-        adPwd1.setText("jPas1");
-        jPanel20.add(adPwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 181, 30));
+        pwd.setText("jPas1");
+        jPanel20.add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 181, 30));
 
         jLabel124.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel124.setForeground(new java.awt.Color(255, 255, 255));
@@ -2445,7 +2452,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel125.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel125.setForeground(new java.awt.Color(255, 255, 255));
         jLabel125.setText("Password");
-        jPanel20.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, 30));
+        jPanel20.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
         ShowPassword1.setBackground(new java.awt.Color(0, 0, 102));
         ShowPassword1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2457,55 +2464,18 @@ public class ClientDashboard extends javax.swing.JFrame {
         });
         jPanel20.add(ShowPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        CardPri8.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 310, -1, 190));
-        CardPri8.add(txtPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
-        CardPri8.add(txtDOB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
+        Setting.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, 190));
 
         AdUpdate1.setBackground(new java.awt.Color(0, 0, 102));
         AdUpdate1.setText("Update");
-        AdUpdate1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdUpdate1ActionPerformed(evt);
-            }
-        });
-        CardPri8.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
-
-        lblimage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
-        lblimage1.setText("jLabel31");
-        CardPri8.add(lblimage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 120));
-
-        jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
-        jLabel126.setText("jLabel29");
-        jLabel126.addMouseListener(new java.awt.event.MouseAdapter() {
+        AdUpdate1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel126MouseClicked(evt);
+                AdUpdate1MouseClicked(evt);
             }
         });
-        CardPri8.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
+        Setting.add(AdUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 107, 40));
 
-        jButton10.setText("add image");
-        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked(evt);
-            }
-        });
-        CardPri8.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
-
-        txtid1.setText("Image name");
-        CardPri8.add(txtid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 120, 20));
-        CardPri8.add(txtCity3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 400, 180, 32));
-
-        jLabel127.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel127.setText("City");
-        CardPri8.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, 32));
-        CardPri8.add(txtCity4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 32));
-
-        jLabel128.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel128.setText("Last Name");
-        CardPri8.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 32));
-        CardPri8.add(txtLName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 250, 29));
-
-        CardjPannel1.add(CardPri8, "CardPri2");
+        Usercard.add(Setting, "Setting");
 
         CardPri9.setBackground(new java.awt.Color(255, 255, 255));
         CardPri9.setForeground(new java.awt.Color(204, 0, 0));
@@ -2707,7 +2677,7 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         CardPri9.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 550, 490));
 
-        CardjPannel1.add(CardPri9, "CardPri3");
+        Usercard.add(CardPri9, "CardPri3");
 
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
         jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2969,9 +2939,9 @@ public class ClientDashboard extends javax.swing.JFrame {
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        CardjPannel1.add(CardPri10, "CardPri4");
+        Usercard.add(CardPri10, "CardPri4");
 
-        getContentPane().add(CardjPannel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
+        getContentPane().add(Usercard, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 670, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -2992,6 +2962,23 @@ public class ClientDashboard extends javax.swing.JFrame {
     
     private void onLoad(){
         userName.setText(getClient().getNickname());
+//        byte[] profile_image = getClient().getProfileImage();
+//        if(profile_image != null){
+//
+//                    Utility utility = new Utility();
+//                    ImageIcon imageicon = utility.toImageIcon(profile_image);
+
+//                    ImageIcon iconresized1 = new ImageIcon(imageicon.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+//                    img_profile.setIcon(iconresized1);
+//                    img_profile2.setIcon(iconresized1);
+//                    img_profile3.setIcon(iconresized1);
+//                    img_profile4.setIcon(iconresized1);
+//                    img_profile5.setIcon(iconresized1);
+//                    img_profile6.setIcon(iconresized1);
+//
+//                    ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+//                    DashPhoto.setIcon(iconresized2);
+//                }
         load_client_groups();
         chat_list_default();
         user = new ChatClient(getClient().getId(),getClient().getUsername(),getClient().getNickname(),getClient().getEmail());
@@ -4000,13 +3987,30 @@ public class ClientDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel100MouseClicked
 
     private void jLabel101MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel101MouseClicked
-        // TODO add your handling code here:
+        updateSection();
+        cardLayout1.show(Usercard,"Setting");
     }//GEN-LAST:event_jLabel101MouseClicked
 
-    private void menutimetable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimetable2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menutimetable2ActionPerformed
+    private void updateSection(){
+            uname.setText(getClient().getUserType());
+            fname.setText(getClient().getNickname());
+            email.setText(getClient().getEmail());
+            pwd.setText(getClient().getPassword());
+            cpwd.setText(getClient().getPassword());
+            usertype.setSelectedItem(getClient().getUserType());
+            
+            byte[] profile_image = getClient().getProfileImage();
+            
+            if(profile_image != null){
 
+                    Utility utility = new Utility();
+                    ImageIcon imageicon = utility.toImageIcon(profile_image);
+
+                    ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+                    edite_profie_pic.setIcon(iconresized2);
+                }
+    }
+    
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
 
@@ -4027,21 +4031,9 @@ public class ClientDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel114MouseClicked
 
-    private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowPassword1MouseClicked
-
-    private void AdUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdUpdate1ActionPerformed
-
     private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel126MouseClicked
-
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10MouseClicked
 
     private void jLabel143MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel143MouseClicked
         // TODO add your handling code here:
@@ -4213,6 +4205,100 @@ public class ClientDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_send_btnMouseEntered
 
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+
+        JFileChooser chooser = new JFileChooser(); //open image file file
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png"); //set image type filter
+        chooser.setFileFilter(filter); //filter
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) { //if image selected
+            File file = chooser.getSelectedFile(); //get selected file
+            String strfilepath = file.getAbsolutePath(); //get abs path
+
+            try {
+                ImageIcon icon = new ImageIcon(strfilepath); //string image path open as a image icon
+                ImageIcon iconresized = new ImageIcon(icon.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT)); //resize image icon fit for profile icon label
+                edite_profie_pic.setText(null); // remove label text
+                edite_profie_pic.setIcon(iconresized); //set seleted image to profile icon label
+
+            } catch (Exception e) {
+                System.out.println("Exception occurred : " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void usertypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertypeActionPerformed
+
+    private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
+        if(ShowPassword1.isSelected()){
+            pwd.setEchoChar((char)0);
+            cpwd.setEchoChar((char)0);
+            ShowPassword1.setText("Hide Password");
+        }
+        else{
+            pwd.setEchoChar('•');
+            cpwd.setEchoChar('•');
+            ShowPassword1.setText("Show Password");
+        }
+    }//GEN-LAST:event_ShowPassword1MouseClicked
+
+    private void AdUpdate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdUpdate1MouseClicked
+        byte[] image = null;
+
+        ImageIcon avatar = (ImageIcon) edite_profie_pic.getIcon();
+        if (avatar != null) {
+            Utility utility = new Utility();
+            try {
+
+                BufferedImage bImage = utility.ImageIconToBufferedImage(avatar);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "png", bos);
+                image = bos.toByteArray();
+
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this,"Error: "+ex.getMessage());
+            }
+
+        }
+
+        Users updateusers = new Users();
+        updateusers.setId(getClient().getId());
+        updateusers.setEmail(email.getText().trim());
+        updateusers.setUsername(uname.getText().trim());
+        updateusers.setNickname(fname.getText().trim());
+        updateusers.setPassword(pwd.getText().trim());
+        updateusers.setProfileImage(image);
+        updateusers.setUserType(getClient().getUserType());
+
+        String cpassword = cpwd.getText().trim();
+
+        DBManager dbManager = new DBManager();
+        if((email.getText().equals("")||uname.getText().equals("")||fname.getText().equals("")||pwd.getText().equals("")||cpwd.getText().equals(""))){
+            JOptionPane.showMessageDialog(this,"please fill al the fields!!");
+        }else{
+            if(pwd.getText().equalsIgnoreCase(cpassword)){
+                if (dbManager.update(updateusers)) {
+                    onLoad();
+                    JOptionPane.showMessageDialog(this,"User updated successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this,"User can not updated!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this,"password not match!");
+            }
+        }
+
+        //        img_profile2.setIcon(avatar);
+        //        img_profile2.setIcon(avatar);
+    }//GEN-LAST:event_AdUpdate1MouseClicked
+
+    private void menutimetable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutimetable2MouseClicked
+        updateSection();
+        cardLayout1.show(Usercard,"Setting");
+    }//GEN-LAST:event_menutimetable2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -4266,12 +4352,11 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel CardPri4;
     private javax.swing.JPanel CardPri5;
     private javax.swing.JPanel CardPri6;
-    private javax.swing.JPanel CardPri8;
     private javax.swing.JPanel CardPri9;
     private javax.swing.JPanel CardjPannel;
-    private javax.swing.JPanel CardjPannel1;
     private rojerusan.RSMaterialButtonRectangle Csearch4;
     private rojerusan.RSMaterialButtonRectangle Csearch5;
+    private javax.swing.JLabel DashPhoto;
     private javax.swing.JTextField Date;
     private javax.swing.JLabel DriCount;
     private javax.swing.JPanel GroupList;
@@ -4282,16 +4367,15 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField ScarId;
     private javax.swing.JButton Search;
     private javax.swing.JButton Search1;
+    private javax.swing.JPanel Setting;
     private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JCheckBox ShowPassword1;
     private javax.swing.JLabel TAmountDisplay;
+    private javax.swing.JPanel Usercard;
     private javax.swing.JPasswordField adCPwd;
-    private javax.swing.JPasswordField adCPwd1;
     private javax.swing.JComboBox<String> adGender;
-    private javax.swing.JComboBox<String> adGender1;
     private javax.swing.JLabel adName;
     private javax.swing.JPasswordField adPwd;
-    private javax.swing.JPasswordField adPwd1;
     private javax.swing.JTextField admintxt;
     private javax.swing.JTextField bidtxt;
     private rojerusan.RSMaterialButtonRectangle booking_id_search;
@@ -4340,6 +4424,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel client_logout2;
     private javax.swing.JTextField costtxt;
     private javax.swing.JTextField costtxt1;
+    private javax.swing.JPasswordField cpwd;
     private javax.swing.JButton csearch;
     private javax.swing.JButton csearch1;
     private javax.swing.JLabel cusad1;
@@ -4351,6 +4436,9 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField damounttxt;
     private javax.swing.JTextField drivertxt;
     private javax.swing.JTextField edatetxt;
+    private javax.swing.JLabel edite_profie_pic;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fname;
     private javax.swing.JTextField ivoicetxt;
     private javax.swing.JTextField ivoicetxt1;
     private javax.swing.JButton jButton1;
@@ -4383,18 +4471,12 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
-    private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel121;
-    private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
-    private javax.swing.JLabel jLabel127;
     private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
@@ -4477,7 +4559,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
@@ -4550,7 +4631,6 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblimage;
-    private javax.swing.JLabel lblimage1;
     private rojerusan.RSMaterialButtonRectangle manage_booking_search;
     private rojerusan.RSMaterialButtonRectangle menuReport;
     private rojerusan.RSMaterialButtonRectangle menucourse;
@@ -4567,6 +4647,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField msg_typer;
     private javax.swing.JTextField partstxt;
     private javax.swing.JTextField partstxt1;
+    private javax.swing.JPasswordField pwd;
     private javax.swing.JTextField reasontxt;
     private javax.swing.JTextField reasontxt1;
     private javax.swing.JTextField sdatetxt;
@@ -4576,28 +4657,20 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JButton timesub;
     private javax.swing.JButton timesub1;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAddress1;
     private javax.swing.JTextField txtCity1;
     private javax.swing.JTextField txtCity2;
-    private javax.swing.JTextField txtCity3;
-    private javax.swing.JTextField txtCity4;
     private javax.swing.JTextField txtDOB;
-    private javax.swing.JTextField txtDOB1;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEmail1;
     private javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtFName1;
     private javax.swing.JTextField txtLName1;
-    private javax.swing.JTextField txtLName2;
     private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtPhone1;
     private javax.swing.JTextField txtRegNo;
-    private javax.swing.JTextField txtRegNo1;
     private javax.swing.JTextField txtaddress2;
-    private javax.swing.JTextField txtaddress3;
     private javax.swing.JLabel txtid;
     private javax.swing.JLabel txtid1;
+    private javax.swing.JTextField uname;
     private javax.swing.JLabel userName;
+    private javax.swing.JComboBox<String> usertype;
     // End of variables declaration//GEN-END:variables
 
     
