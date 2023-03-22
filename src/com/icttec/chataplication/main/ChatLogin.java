@@ -196,7 +196,9 @@ public class ChatLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void btnsing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsing1ActionPerformed
-        // TODO add your handling code here:
+        ChatRegister chatRegister = new ChatRegister();
+        chatRegister.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnsing1ActionPerformed
 
     private void btnlog1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlog1ActionPerformed

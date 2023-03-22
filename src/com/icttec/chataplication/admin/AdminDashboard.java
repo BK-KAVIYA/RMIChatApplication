@@ -2217,7 +2217,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        CardAdmin.add(GroupList, "CardPri1");
+        CardAdmin.add(GroupList, "GroupList");
 
         Setting.setBackground(new java.awt.Color(255, 255, 255));
         Setting.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2260,7 +2260,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         Setting.add(usertype, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
 
         jLabel116.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel116.setText("Gender");
+        jLabel116.setText("User Type");
         Setting.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, 32));
 
         jLabel118.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -3455,7 +3455,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel99MouseClicked
 
     private void menuuser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuuser1ActionPerformed
-        // TODO add your handling code here:
+        cardLayout1.show(CardAdmin,"GroupList");
     }//GEN-LAST:event_menuuser1ActionPerformed
 
     private void menucourse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menucourse1ActionPerformed
@@ -3492,7 +3492,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel101MouseClicked
 
     private void menutimetable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menutimetable2ActionPerformed
-        // TODO add your handling code here:
+        cardLayout1.show(CardAdmin,"Setting");
     }//GEN-LAST:event_menutimetable2ActionPerformed
 
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
@@ -3508,11 +3508,15 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel111MouseClicked
 
     private void jLabel143MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel143MouseClicked
-        // TODO add your handling code here:
+         this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel143MouseClicked
 
     private void jLabel144MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel144MouseClicked
-        // TODO add your handling code here:
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel144MouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
@@ -3558,11 +3562,15 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jLabel156MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel156MouseClicked
-        // TODO add your handling code here:
+         this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel156MouseClicked
 
     private void jLabel157MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel157MouseClicked
-        // TODO add your handling code here:
+        int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel157MouseClicked
 
     private void csearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csearch1ActionPerformed
@@ -3637,7 +3645,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             g_name.setForeground(new java.awt.Color(255, 255, 255));
             g_name.setText(next.getName());
             
-            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, 29));
+            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 45));
             group.add(g_des, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 36, 163, 33));
             group.add(g_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
             group_panel.add(group, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y, 470, 90));
@@ -3693,7 +3701,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10MouseClicked
 
     private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
-        // TODO add your handling code here:
+        this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel126MouseClicked
 
     private void ShowPassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowPassword1MouseClicked
@@ -3710,7 +3718,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_ShowPassword1MouseClicked
 
     private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
-        // TODO add your handling code here:
+         int dialogResult=JOptionPane.showConfirmDialog(null,"Do You Want to Exit?", "Warnning",JOptionPane.YES_NO_OPTION);
+
+        if(dialogResult==JOptionPane.YES_NO_OPTION){    
+                System.exit(0);
+        }
     }//GEN-LAST:event_jLabel114MouseClicked
 
     private void jLabel112MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel112MouseClicked

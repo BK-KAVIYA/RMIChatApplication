@@ -57,6 +57,35 @@ public class DBManager implements DBManagerInterface{
     
     }
 
+    public boolean AddUser(Users adUser){
+        Session sess = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sess.beginTransaction();
+        Users users = new Users();
+
+  
+
+        users.setEmail(adUser.getEmail());
+        users.setIsDeleted(0);
+        users.setNickname(adUser.getNickname());
+        users.setPassword(adUser.getPassword());
+        users.setProfileImage(adUser.getProfileImage());
+        users.setUserType(adUser.getUserType());
+        users.setUsername(adUser.getUsername());
+        
+        try {
+            sess.save(users);
+            transaction.commit();
+            sess.close();
+                      
+            return true;
+        } catch (Exception e) {
+            System.out.println("Exeption Occur "+e.getMessage());
+            return false;
+        }
+    
+    
+    }
+    
     @Override
     public boolean update(Users udUser) {
         Session sess = HibernateUtil.getSessionFactory().openSession();
