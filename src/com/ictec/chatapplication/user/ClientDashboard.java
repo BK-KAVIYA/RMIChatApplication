@@ -8,6 +8,7 @@ import com.icttec.chatapplication.dbmanager.DBManager;
 import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.service.Chat;
+import com.icttec.chatapplication.service.ChatService;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -25,6 +26,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -2308,8 +2310,8 @@ public class ClientDashboard extends javax.swing.JFrame {
                         //System.out.println("Calling "+m);
                         msg.setMessage(m);
                         try {
-                            
-                            chat.send_message(msg);
+                            ChatService chatService = new ChatService(EGroupId);
+                            chatService.send_message(msg);
                             System.out.println("Message :"+msg.getMessage());
                         } catch (RemoteException ex) {
                             Logger.getLogger(ClientDashboard.class.getName()).log(Level.SEVERE, null, ex);
@@ -2390,6 +2392,13 @@ public class ClientDashboard extends javax.swing.JFrame {
                 System.out.println("chat is subcribe");
                 chatDefault();
                 EGroupId = groupId;
+                ChatService chatService = new ChatService(EGroupId);
+                ArrayList<Message> message=chatService.retriveMSG();
+                for (Message msg : message) {
+                    System.out.println("enter to chat"+msg.getMessage());
+                }
+                
+                
                 retrivemsg.start();
             }
         System.out.println("chat is not subcribe");
@@ -2432,9 +2441,7 @@ public class ClientDashboard extends javax.swing.JFrame {
                     }
 
                     Thread.sleep(100);
-                } catch (RemoteException | NullPointerException ex) {
-                    System.out.println("Error : "+ex.getMessage());
-                } catch (InterruptedException ex) {
+                } catch (RemoteException | NullPointerException | InterruptedException ex) {
                     System.out.println("Error : "+ex.getMessage());
                 }
             }

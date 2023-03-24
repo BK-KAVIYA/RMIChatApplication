@@ -3452,6 +3452,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel99MouseClicked
 
     private void menuuser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuuser1ActionPerformed
+        loadGroup(true);
         cardLayout1.show(CardAdmin,"GroupList");
     }//GEN-LAST:event_menuuser1ActionPerformed
 

@@ -11,11 +11,14 @@ import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class ChatService extends UnicastRemoteObject implements Chat {
 
     Message newmsg = null;
     int group_id;
     ArrayList<ChatClient> subs = new ArrayList<ChatClient>();
+    ArrayList<Message> msglist = new ArrayList<Message>();
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
 
@@ -57,6 +60,25 @@ public class ChatService extends UnicastRemoteObject implements Chat {
             System.out.println(e);
         }
 
+    }
+    
+    
+    
+    @Override
+    public ArrayList<Message> retriveMSG(){
+       msglist = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream("chat_log/"+this.newmsg.getGroup_id()+"_.txt");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            msglist=(ArrayList<Message>)objectInputStream.readObject();
+            
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("File Not fount"+ex.getMessage());
+        } catch (IOException | ClassNotFoundException ex) {
+             System.out.println("Class Not fount"+ex.getMessage());
+        }
+        return msglist;
     }
 
     public void retrive_subs() {
