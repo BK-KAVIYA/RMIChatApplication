@@ -3,13 +3,10 @@ package com.icttec.chatapplication.client;
 
 import com.icttec.chatapplication.service.Chat;
 import java.io.Serializable;
-import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class ChatClient implements Serializable {

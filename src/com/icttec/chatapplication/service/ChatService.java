@@ -19,19 +19,18 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
 
-    public ChatService() throws RemoteException{
-    }
-
     
     public ChatService(int group_id) throws RemoteException {
         super();
         this.group_id = group_id;
+        System.out.println("Constructor");
     }
 
     @Override
     public void send_message(Message msg) {
-        System.out.println(msg.getMessage());
+        System.out.println("inside send msg"+msg.getMessage());
         this.newmsg = msg;
+        System.out.println("New save massage function invoke");
         this.save_msg();
     }
 
@@ -42,9 +41,9 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     }
 
     public void save_msg() {
-
+        
         try {
-            FileOutputStream fileOut = new FileOutputStream("chat_log/"+this.newmsg.getGroup_id()+"_.ser", true);
+            FileOutputStream fileOut = new FileOutputStream("chat_log/"+this.newmsg.getGroup_id()+"_.txt", true);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(this.newmsg);

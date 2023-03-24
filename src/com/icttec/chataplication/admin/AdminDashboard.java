@@ -48,10 +48,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         initComponents();
         cardLayout1 =(CardLayout)(CardAdmin.getLayout());
         loadGroup(true);
-//        chatClient = new ChatClient(getAdmin().getId(), user.getUsername(), user.getNickname(), user.getEmail());
-//                    //start client
-//                    load_client_groups();
-//                    this.start_client();
+
         
     }
 

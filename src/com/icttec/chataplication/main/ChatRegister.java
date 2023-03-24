@@ -42,10 +42,10 @@ public class ChatRegister extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -77,6 +77,10 @@ public class ChatRegister extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/chat_banner.png"))); // NOI18N
+        jLabel16.setText("jLabel4");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 540, 470));
+
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 0, 51));
         jLabel6.setText("Chat Application");
@@ -89,10 +93,6 @@ public class ChatRegister extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/chat_app_icon.png"))); // NOI18N
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 100));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/chat_banner.png"))); // NOI18N
-        jLabel16.setText("jLabel4");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 540, 470));
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 102));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

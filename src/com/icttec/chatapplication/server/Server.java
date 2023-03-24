@@ -31,7 +31,7 @@ public class Server implements ServerDAO{
         System.out.println("group id"+groupID);
         try {
             chat = new ChatService(groupID);
-            registry = LocateRegistry.createRegistry(2123);
+            registry = LocateRegistry.createRegistry(5476);
             
             
             registry.bind("ChatAdmin", chat);

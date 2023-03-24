@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.icttec.chatapplication.dbmanager;
 
 import com.icttec.chatapplication.dao.HibernateUtil;
@@ -128,7 +124,7 @@ public class DBManager implements DBManagerInterface{
         Files files = new Files();
 
         files.setChatId(chatID);
-        files.setLink("chat_log/"+chatID + "_.ser");
+        files.setLink("chat_log/"+chatID + "_.txt");
 
         sess.save(files);
         t.commit();
