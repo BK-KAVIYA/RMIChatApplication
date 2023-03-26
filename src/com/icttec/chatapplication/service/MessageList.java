@@ -2,9 +2,11 @@
 package com.icttec.chatapplication.service;
 
 import com.icttec.chatapplication.client.Message;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 //This class is for saving the messages list as an array list thus also a observable

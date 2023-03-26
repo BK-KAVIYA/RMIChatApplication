@@ -2183,14 +2183,11 @@ public class ClientDashboard extends javax.swing.JFrame implements Observer{
                 MessageList messageList = new MessageList(EGroupId);
                 //ChatService chatService = new ChatService(EGroupId);
                 ArrayList<Message> message=messageList.getMessageList();
-//                System.out.println("class "+message.getClass());
-//                System.out.println("Name "+message.toString());
-//               
-//                
-//                 for (Message msg : message) {
-//                     System.out.println("msg is"+msg.getMessage());
-////chatHistory(msg);              
-//                }
+                 for(Message obj:message.subList(1, message.size())){
+                     System.out.println(message.size());
+                    //System.out.println(obj.getMessage());
+                     chatHistory(obj);
+                  }
                                 
                 retrivemsg.start();
             }
@@ -2628,8 +2625,8 @@ public class ClientDashboard extends javax.swing.JFrame implements Observer{
                // messageList.addMessage(msg,EGroupId);
                 
                 chat.send_message(msg);
-                ChatService chatService = new ChatService(EGroupId);
-                chatService.send_message(msg);
+//                ChatService chatService = new ChatService(EGroupId);
+//                chatService.send_message(msg);
                 
                 msg_typer.setText("");
             } catch (RemoteException ex) {
