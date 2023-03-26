@@ -11,14 +11,15 @@ import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Arrays;
 public class ChatService extends UnicastRemoteObject implements Chat {
 
     Message newmsg = null;
+    Message message=null;
     int group_id;
     ArrayList<ChatClient> subs = new ArrayList<ChatClient>();
     ArrayList<Message> msglist = new ArrayList<Message>();
+   // List <Message> mList;
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
 
@@ -33,8 +34,8 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     public void send_message(Message msg) {
         System.out.println("inside send msg"+msg.getMessage());
         this.newmsg = msg;
-        System.out.println("New save massage function invoke");
-        this.save_msg();
+       // System.out.println("New save massage function invoke");
+        save_msg(msg);
     }
 
     @Override
@@ -43,13 +44,16 @@ public class ChatService extends UnicastRemoteObject implements Chat {
        
     }
 
-    public void save_msg() {
-        
+    public void save_msg(Message message) {
+        System.out.println("Save message invoke");
         try {
-            FileOutputStream fileOut = new FileOutputStream("chat_log/"+this.newmsg.getGroup_id()+"_.txt", true);
+            
+            FileOutputStream fileOut = new FileOutputStream("chat_log/"+group_id+"_.txt",true);
+            //AppendableObjectOutputStream oout = new AppendableObjectOutputStream(fileOut, true);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-            out.writeObject(this.newmsg);
+            System.out.println("new msg"+message.getMessage());
+            out.writeObject(message);
             out.flush();
             out.close();
             fileOut.close();
@@ -64,13 +68,24 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     
     
     
-    @Override
+
     public ArrayList<Message> retriveMSG(){
        msglist = null;
         try {
-            FileInputStream fileInputStream = new FileInputStream("chat_log/"+this.newmsg.getGroup_id()+"_.txt");
+            FileInputStream fileInputStream = new FileInputStream("chat_log/"+group_id+"_.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            msglist=(ArrayList<Message>)objectInputStream.readObject();
+//            while(true){ 
+//                msglist.add((Message)objectInputStream.readObject());
+//            }
+            
+//            Object object=null;
+//            while ((object=objectInputStream.readObject()) ) {                
+//                
+//            }
+            //message=(Message) objectInputStream.readObject();
+            msglist=new ArrayList(Arrays.asList(objectInputStream.readObject()));
+           // mList = new ArrayList<> (Arrays.asList((Message[])objectInputStream.readObject()));
+            //msglist = Arrays.asList(((Message[])objectInputStream.readObject());
             
             
         } catch (FileNotFoundException ex) {
@@ -86,13 +101,11 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         FileInputStream filein;
         
         try {
-            filein = new FileInputStream("subscribers_log/"+group_id + "_subscribers.ser");
+            filein = new FileInputStream("subscribers_log/"+this.newmsg.getGroup_id() + "_subscribers.ser");
             ObjectInputStream inobj = new ObjectInputStream(filein);
             subs = (ArrayList<ChatClient>) inobj.readObject();
             
-        } catch ( IOException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
+        } catch ( IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
 

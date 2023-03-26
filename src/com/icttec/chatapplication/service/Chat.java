@@ -13,7 +13,7 @@ public interface Chat extends Remote{
     
     public void send_message(Message msg) throws RemoteException;
     
-    public ArrayList<Message> retriveMSG() throws RemoteException;
+ //   public ArrayList<Message> retriveMSG() throws RemoteException;
     
     public Message broadcast() throws RemoteException;
     

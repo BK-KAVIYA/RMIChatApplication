@@ -315,6 +315,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         msg_typer = new javax.swing.JTextField();
         send_btn = new javax.swing.JLabel();
         jLabel105 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
         Setting = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
@@ -722,9 +723,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         CardPri2.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 470, 193, 29));
         CardPri2.add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 470, 176, 29));
 
-        AdUpdate.setBackground(new java.awt.Color(0, 0, 102));
-        AdUpdate.setText("Update");
-        
+
         CardPri2.add(AdUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 107, 40));
 
         lblimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/user1.png"))); // NOI18N
@@ -739,8 +738,6 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
         });
         CardPri2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
-
-        jButton9.setText("add image");
 
         CardPri2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
@@ -796,7 +793,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 102));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Search");
 
         jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 80, 30));
 
@@ -830,7 +826,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 0, 102));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Search");
 
         jPanel7.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 80, 30));
 
@@ -870,60 +865,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102)));
 
-        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel39.setText("Car ID");
-
-        jLabel40.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel40.setText("Car Name");
-
-        jLabel41.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel41.setText("Car Type");
-
-        jLabel42.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel42.setText("Status");
-
-        jLabel43.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel43.setText("Price");
-
-        jLabel44.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel44.setText("Add New Car");
-
-        cadd.setBackground(new java.awt.Color(0, 0, 102));
-        cadd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cadd.setForeground(new java.awt.Color(255, 255, 255));
-        cadd.setText("ADD");
-
-
-        jLabel45.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel45.setText("No_of_seats");
-
-        cdelete.setBackground(new java.awt.Color(0, 0, 102));
-        cdelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cdelete.setForeground(new java.awt.Color(255, 255, 255));
-        cdelete.setText("DELETE");
-
-
-        jLabel51.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel51.setText("Number Plate");
-
-        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel54.setText("Fuel Type");
-
-
-        cFueltype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Petrol", "Diesel" }));
-
-        cadd1.setBackground(new java.awt.Color(0, 0, 102));
-        cadd1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cadd1.setForeground(new java.awt.Color(255, 255, 255));
-        cadd1.setText("UPDATE");
-        
-
-        csearch.setBackground(new java.awt.Color(0, 0, 102));
-        csearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        csearch.setForeground(new java.awt.Color(255, 255, 255));
-        csearch.setText("SEARCH");
- 
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1059,18 +1000,10 @@ public class ClientDashboard extends javax.swing.JFrame {
         jLabel47.setText("Maintanance Id");
         jPanel10.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 22));
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 102));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Search");
-        
+
         jPanel10.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 80, 30));
 
-        timesub.setBackground(new java.awt.Color(0, 0, 102));
-        timesub.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        timesub.setForeground(new java.awt.Color(255, 255, 255));
-        timesub.setText("Search");
-       
+
         jPanel10.add(timesub, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, 30));
 
         jLabel48.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1106,7 +1039,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         jPanel10.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 570, 100));
         jPanel10.add(CarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 130, 30));
 
-        
+
         jPanel10.add(MaintanceID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 130, 30));
 
         jTabbedPane2.addTab("View Maintanance", new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/timetableListr.png")), jPanel10); // NOI18N
@@ -1115,45 +1048,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102)));
         jPanel11.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel53.setText("Add Maintanance");
-
-        jButton7.setBackground(new java.awt.Color(0, 0, 102));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Delete");
-
-
-        jButton8.setBackground(new java.awt.Color(0, 0, 102));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Add");
-
-
-        jLabel5.setText("M Id");
-
-        jLabel55.setText("Reason");
-
-        jLabel46.setText("Parts");
-
-        jLabel49.setText("Cost");
-
-        jLabel58.setText("Car ID");
-
-        jLabel61.setText("Invoive No");
-
-        Search.setBackground(new java.awt.Color(0, 0, 102));
-        Search.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        Search.setForeground(new java.awt.Color(255, 255, 255));
-        Search.setText("Search");
-
-
-        jButton11.setBackground(new java.awt.Color(0, 0, 102));
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Update");
- 
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -1280,14 +1174,6 @@ public class ClientDashboard extends javax.swing.JFrame {
 
 
 
-        cusidsearch.setBackground(new java.awt.Color(0, 0, 102));
-        cusidsearch.setText("Search");
-
-
-        booking_id_search.setBackground(new java.awt.Color(0, 0, 102));
-        booking_id_search.setText("Search");
-
-
         bookingtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -1363,59 +1249,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102), new java.awt.Color(0, 0, 102)));
 
-        jLabel73.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel73.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel73.setText("Manage Bookings");
-
-        jLabel74.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel74.setText("Booking ID :");
-
-  
-
-        jLabel86.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel86.setText("Start Date :");
-
-
-
-        jLabel87.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel87.setText("End Date :");
-
-
-        jLabel88.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel88.setText("Status :");
-
-        jLabel89.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel89.setText("Deposit Amount :");
-
-        statustxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pending", "Approve" }));
-
-        jLabel90.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel90.setText("Customer ID :");
-
-        jLabel91.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel91.setText("Car ID :");
-
-        jLabel92.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel92.setText("Driver ID :");
-
-        jLabel93.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel93.setText("Admin ID :");
-
-        bookingadd.setBackground(new java.awt.Color(0, 0, 102));
-        bookingadd.setText("Add");
-
-
-        bookingupdate.setBackground(new java.awt.Color(0, 0, 102));
-        bookingupdate.setText("Update");
-
-
-        bookingdelete.setBackground(new java.awt.Color(0, 0, 102));
-        bookingdelete.setText("Delete");
-
-
-        manage_booking_search.setBackground(new java.awt.Color(0, 0, 102));
-        manage_booking_search.setText("Search");
- 
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1569,55 +1402,12 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         CardPri6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel21.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jLabel21.setText("Admin Dashboard >Checkout->");
-
-
-
-        jLabel75.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel75.setText("Booking ID");
-
-
-        jLabel76.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel76.setText("Customer ID :");
-
-
-        jLabel77.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel77.setText("Admin ID :");
-
-        jLabel94.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel94.setText("Date :");
-
-        Date.setEnabled(false);
-
-
-        jLabel95.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel95.setText("Amount :");
 
 
         Invoice.setBackground(new java.awt.Color(255, 255, 255));
         Invoice.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 204), 1, true));
 
-        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel57.setText("CUSTOMER INVOICE");
 
-        jLabel59.setText("Bill To:");
-
-        jLabel60.setText("MR");
-
-        cusname.setText("Ashan Indarajith");
-
-        cusad1.setText("No120, Kesbewa Road,");
-
-        cusad2.setText("Piliyandala");
-
-        jLabel65.setText("FROM:");
-
-        jLabel67.setText("Get Far Cars");
-
-        jLabel68.setText("No10, Neluwa Road,");
-
-        jLabel69.setText("Galle");
 
         InvoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1637,17 +1427,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         InvoiceTable.setFuenteHead(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jScrollPane5.setViewportView(InvoiceTable);
 
-        jLabel66.setText("Payment Method:");
 
-        jLabel70.setText("Cash");
-
-        jLabel71.setText("Thank You for Choosing US!");
-
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel96.setText("Total :");
-
-        TAmountDisplay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TAmountDisplay.setText("RS : 18000.00");
 
         javax.swing.GroupLayout InvoiceLayout = new javax.swing.GroupLayout(Invoice);
         Invoice.setLayout(InvoiceLayout);
@@ -1730,12 +1510,7 @@ public class ClientDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Csearch4.setBackground(new java.awt.Color(0, 0, 102));
-        Csearch4.setText("Add");
 
-
-        Csearch5.setBackground(new java.awt.Color(0, 0, 102));
-        Csearch5.setText("Print");
 
 
         jLabel98.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
@@ -1977,7 +1752,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         chat_list_panel.add(chatlist_setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 30, 30));
 
         client_logout1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-   
+
         chat_list_panel.add(client_logout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 30, 30));
 
         chat_list_scrollPane1.setBackground(new java.awt.Color(28, 36, 47));
@@ -1998,19 +1773,20 @@ public class ClientDashboard extends javax.swing.JFrame {
         chat_body_panel.add(chatlist_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 300, 30));
 
         chatlist_setting2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+  
         chat_body_panel.add(chatlist_setting2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 30, 30));
 
         client_logout2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
- 
+
         chat_body_panel.add(client_logout2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 30, 30));
 
-        chat_background.setBackground(new java.awt.Color(51, 153, 255));
+        chat_background.setBackground(new java.awt.Color(0, 0, 102));
         chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         msgScrollPane.setViewportView(chat_background);
 
         chat_body_panel.add(msgScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 370, 360));
 
+        msg_typer.setBackground(new java.awt.Color(0, 0, 102));
         msg_typer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         msg_typer.setBorder(null);
         msg_typer.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2018,13 +1794,21 @@ public class ClientDashboard extends javax.swing.JFrame {
                 msg_typerKeyPressed(evt);
             }
         });
-        chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, 30));
+        chat_body_panel.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 300, 30));
 
         send_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/send.png"))); // NOI18N
         send_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        send_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                send_btnMouseClicked(evt);
+            }
 
-        chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 40, 40));
-        chat_body_panel.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, 10));
+        });
+        chat_body_panel.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 50, 40));
+        chat_body_panel.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 250, 10));
+
+        jLabel64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/hrline.png"))); // NOI18N
+        chat_body_panel.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 250, 10));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -2108,8 +1892,6 @@ public class ClientDashboard extends javax.swing.JFrame {
         });
         Setting.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 18, 20));
 
-        jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PHOTOS/minimize.png"))); // NOI18N
-        jLabel126.setText("jLabel29");
 
         Setting.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, -1));
 
@@ -2144,7 +1926,7 @@ public class ClientDashboard extends javax.swing.JFrame {
 
         usertype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "User", "Admin" }));
         usertype.setEnabled(false);
- 
+
         Setting.add(usertype, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 260, 28));
 
         email.setEditable(false);
@@ -2395,10 +2177,10 @@ public class ClientDashboard extends javax.swing.JFrame {
                 ChatService chatService = new ChatService(EGroupId);
                 ArrayList<Message> message=chatService.retriveMSG();
                 for (Message msg : message) {
+                    send_msg_handler(msg);
                     System.out.println("enter to chat"+msg.getMessage());
                 }
-                
-                
+                                
                 retrivemsg.start();
             }
         System.out.println("chat is not subcribe");
@@ -2825,6 +2607,9 @@ public class ClientDashboard extends javax.swing.JFrame {
 
             try {
                 chat.send_message(msg);
+                ChatService chatService = new ChatService(EGroupId);
+                chatService.save_msg(msg);
+                
                 msg_typer.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
@@ -2931,6 +2716,11 @@ public class ClientDashboard extends javax.swing.JFrame {
         updateSection();
         cardLayout1.show(Usercard,"Setting");
     }//GEN-LAST:event_menutimetable2MouseClicked
+
+    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_send_btnMouseClicked
+        sender();
+    }//GEN-LAST:event_send_btnMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -3143,6 +2933,7 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
