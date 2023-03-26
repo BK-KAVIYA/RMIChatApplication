@@ -30,6 +30,7 @@ public class Server implements ServerDAO{
     public void startServer(int groupID) {
         System.out.println("group id"+groupID);
         try {
+
             chat = new ChatService(groupID);
             registry = LocateRegistry.createRegistry(5476);
             

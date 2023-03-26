@@ -1,7 +1,7 @@
 package com.icttec.chatapplication.service;
 
-import com.icttec.chatapplication.client.ChatClient;
 import com.icttec.chatapplication.client.Message;
+import com.icttec.chatapplication.client.ChatClient;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,7 +18,8 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     Message message=null;
     int group_id;
     ArrayList<ChatClient> subs = new ArrayList<ChatClient>();
-    ArrayList<Message> msglist = new ArrayList<Message>();
+    ArrayList<Message> msglist; 
+    MessageList messageList = new MessageList(group_id);
    // List <Message> mList;
     //= new ArrayList<ChatClient>();
     //ChatClient chatClient = new //ChatClient();
@@ -34,8 +35,9 @@ public class ChatService extends UnicastRemoteObject implements Chat {
     public void send_message(Message msg) {
         System.out.println("inside send msg"+msg.getMessage());
         this.newmsg = msg;
+        messageList.addMessage(newmsg, group_id);
        // System.out.println("New save massage function invoke");
-        save_msg(msg);
+       // save_msg(msg);
     }
 
     @Override
@@ -48,7 +50,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         System.out.println("Save message invoke");
         try {
             
-            FileOutputStream fileOut = new FileOutputStream("chat_log/"+group_id+"_.txt",true);
+            FileOutputStream fileOut = new FileOutputStream("chat_log/"+group_id+"_.ser",true);
             //AppendableObjectOutputStream oout = new AppendableObjectOutputStream(fileOut, true);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -71,28 +73,30 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 
     public ArrayList<Message> retriveMSG(){
        msglist = null;
-        try {
-            FileInputStream fileInputStream = new FileInputStream("chat_log/"+group_id+"_.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//            while(true){ 
-//                msglist.add((Message)objectInputStream.readObject());
-//            }
-            
-//            Object object=null;
-//            while ((object=objectInputStream.readObject()) ) {                
-//                
-//            }
-            //message=(Message) objectInputStream.readObject();
-            msglist=new ArrayList(Arrays.asList(objectInputStream.readObject()));
-           // mList = new ArrayList<> (Arrays.asList((Message[])objectInputStream.readObject()));
-            //msglist = Arrays.asList(((Message[])objectInputStream.readObject());
-            
-            
-        } catch (FileNotFoundException ex) {
-            System.out.println("File Not fount"+ex.getMessage());
-        } catch (IOException | ClassNotFoundException ex) {
-             System.out.println("Class Not fount"+ex.getMessage());
-        }
+       
+       msglist= messageList.getMessageList();
+//        try {
+//            FileInputStream fileInputStream = new FileInputStream("chat_log/"+group_id+"_.txt");
+//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+////            while(true){ 
+////                msglist.add((Message)objectInputStream.readObject());
+////            }
+//            
+////            Object object=null;
+////            while ((object=objectInputStream.readObject()) ) {                
+////                
+////            }
+//            //message=(Message) objectInputStream.readObject();
+//            msglist=new ArrayList(Arrays.asList(objectInputStream.readObject()));
+//           // mList = new ArrayList<> (Arrays.asList((Message[])objectInputStream.readObject()));
+//            //msglist = Arrays.asList(((Message[])objectInputStream.readObject());
+//            
+//            
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("File Not fount"+ex.getMessage());
+//        } catch (IOException | ClassNotFoundException ex) {
+//             System.out.println("Class Not fount"+ex.getMessage());
+//        }
         return msglist;
     }
 

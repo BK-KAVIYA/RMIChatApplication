@@ -1,6 +1,7 @@
 
 package com.ictec.chatapplication.user;
 
+
 import com.icttec.chataplication.main.ChatLogin;
 import com.icttec.chatapplication.client.ChatClient;
 import com.icttec.chatapplication.client.Message;
@@ -9,6 +10,7 @@ import com.icttec.chatapplication.entity.Groups;
 import com.icttec.chatapplication.entity.Users;
 import com.icttec.chatapplication.service.Chat;
 import com.icttec.chatapplication.service.ChatService;
+import com.icttec.chatapplication.service.MessageList;
 import com.icttec.chatapplication.utility.Utility;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -29,6 +31,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -44,8 +49,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author KA VI YA
  */
-public class ClientDashboard extends javax.swing.JFrame {
+public class ClientDashboard extends javax.swing.JFrame implements Observer{
 
+    // MessageList messageList = new MessageList();
 
     ChatClient user;
     Chat chat;
@@ -2092,8 +2098,8 @@ public class ClientDashboard extends javax.swing.JFrame {
                         //System.out.println("Calling "+m);
                         msg.setMessage(m);
                         try {
-                            ChatService chatService = new ChatService(EGroupId);
-                            chatService.send_message(msg);
+                           // ChatService chatService = new ChatService(EGroupId);
+                            chat.send_message(msg);
                             System.out.println("Message :"+msg.getMessage());
                         } catch (RemoteException ex) {
                             Logger.getLogger(ClientDashboard.class.getName()).log(Level.SEVERE, null, ex);
@@ -2174,12 +2180,17 @@ public class ClientDashboard extends javax.swing.JFrame {
                 System.out.println("chat is subcribe");
                 chatDefault();
                 EGroupId = groupId;
-                ChatService chatService = new ChatService(EGroupId);
-                ArrayList<Message> message=chatService.retriveMSG();
-                for (Message msg : message) {
-                    send_msg_handler(msg);
-                    System.out.println("enter to chat"+msg.getMessage());
-                }
+                MessageList messageList = new MessageList(EGroupId);
+                //ChatService chatService = new ChatService(EGroupId);
+                ArrayList<Message> message=messageList.getMessageList();
+//                System.out.println("class "+message.getClass());
+//                System.out.println("Name "+message.toString());
+//               
+//                
+//                 for (Message msg : message) {
+//                     System.out.println("msg is"+msg.getMessage());
+////chatHistory(msg);              
+//                }
                                 
                 retrivemsg.start();
             }
@@ -2189,6 +2200,13 @@ public class ClientDashboard extends javax.swing.JFrame {
         }
     }
     
+    public void chatHistory(Message message){
+         if (message.getUserid() == user.getId()) {                         
+              send_msg_handler(message);
+         } else {                               
+             recive_msg_handler(message);
+         }
+    }
      public void chatDefault() {
         chat_list_panel.setVisible(false);
         chat_body_panel.setVisible(true);
@@ -2211,10 +2229,10 @@ public class ClientDashboard extends javax.swing.JFrame {
 
                             System.out.println(newmsg.getMsgid() + "-" + user.getId()+"-"+newmsg.getUserid());
                             if (newmsg.getUserid() == user.getId()) {
-                                System.out.println("Thread invoke true");
+                                
                                 send_msg_handler(newmsg);
                             } else {
-                                System.out.println("Thread invoke else");
+                                
                                 recive_msg_handler(newmsg);
                             }
 
@@ -2581,6 +2599,7 @@ public class ClientDashboard extends javax.swing.JFrame {
         
 
             try {
+              //  messageList.addMessage(msg,EGroupId);
                 chat.send_message(msg);
                 
                 msg_typer.setText("");
@@ -2606,9 +2625,11 @@ public class ClientDashboard extends javax.swing.JFrame {
             msg.setDate_time(time_now);
 
             try {
+               // messageList.addMessage(msg,EGroupId);
+                
                 chat.send_message(msg);
                 ChatService chatService = new ChatService(EGroupId);
-                chatService.save_msg(msg);
+                chatService.send_message(msg);
                 
                 msg_typer.setText("");
             } catch (RemoteException ex) {
@@ -3033,6 +3054,11 @@ public class ClientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel userName;
     private javax.swing.JComboBox<String> usertype;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }
