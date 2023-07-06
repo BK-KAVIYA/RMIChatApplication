@@ -2,6 +2,8 @@
 
 Chat Application Developed Using Java RMI
 
+<img src="https://github.com/BK-KAVIYA/RMIChatApplication/blob/main/UI/screanshot.jpg">
+
 ## Table of Contents
 
 - [Project Description](#project-description)
